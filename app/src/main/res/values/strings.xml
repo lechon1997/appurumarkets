@@ -11,6 +11,25 @@
     <string name="passwd">Contraseña</string>
     <string name="confirmar_passwd">Confirmar Contraseña</string>
     <string name="cedula">cedula</string>
+    <string name="garka">garca</string>
+    <string name="asdsad">asdsad</string>
 
+    <string name="RUT">Rut</string>
+    <string name="RazonSocial">Razon Social</string>
+    <string name="NombreFantasia">Nombre Fantasia</string>
+    <string name="tipoorg">Tipo Organizacion</string>
+    <string name="rubro">Rubro</string>
+    <string name="TelefonoEmpresa">Telefono Empresa</string>
+    <string name="direccion">Direccion</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="ModificarDatosEmpresa">Modificar Datos Empresa</string>
+
+    <string-array name="arraytipoorg">
+        <item>ONG</item>
+        <item>TipoORG2</item>
+        <item>TipoORG3</item>
+        <item>TipoORG4</item>
+    </string-array>
 
 </resources>

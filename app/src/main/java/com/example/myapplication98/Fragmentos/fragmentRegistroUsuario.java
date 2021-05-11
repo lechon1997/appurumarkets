@@ -148,7 +148,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
     }
 
     private void cargarWS() {
-        String url = "http://192.168.1.2/urumarkets/public/api/test-api";
+        String url = "http://192.168.1.7/urumarkets/public/api/test-api";
         jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }

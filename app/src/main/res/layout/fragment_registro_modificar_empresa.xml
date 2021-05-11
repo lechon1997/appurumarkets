@@ -27,11 +27,179 @@
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
-            android:text="@string/registro_de_datos"
+            android:text="@string/ModificarDatosEmpresa"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="#212121"
             android:textSize="36sp"
             android:textStyle="bold" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/shrek2"
+            android:hint="@string/cedula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etci"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="number"
+                android:maxLines="1"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilnombre"
+            style="@style/shrek2"
+            android:hint="@string/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:helperTextTextColor="#D50000"
+            app:helperTextEnabled="true"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_baseline_error_24"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tietnombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:maxLines="1"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPersonName"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/shrek2"
+            android:hint="@string/apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:helperTextTextColor="#D50000"
+            app:helperTextEnabled="true"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/ic_baseline_error_24"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/shrek2"
+            android:hint="@string/correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:counterMaxLength="60"
+            app:counterEnabled="true"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textEmailAddress"
+                android:paddingStart="22dp"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/shrek2"
+            android:hint="@string/passwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/shrek2"
+            android:hint="@string/confirmar_passwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:counterMaxLength="30"
+            app:counterEnabled="true"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/shrek2"
@@ -124,15 +292,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/shrek2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="338dp"
+            android:layout_height="56dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:hint="@string/tipoorg"
-            android:orientation="horizontal"
             app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
             app:boxCornerRadiusBottomStart="@dimen/circle_radius"
             app:boxCornerRadiusTopEnd="@dimen/circle_radius"
@@ -150,12 +317,11 @@
 
             <Spinner
                 android:id="@+id/spinner2"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
-
+                android:layout_weight="1"
                 android:entries="@array/arraytipoorg" />
-        </LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/shrek2"

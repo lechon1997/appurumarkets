@@ -11,9 +11,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.R;
+import com.example.myapplication98.WebService.MySingleton;
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +38,10 @@ public class fragmentLogin extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
     private ControladorVista CV = ControladorVista.getInstance();
-    // TODO: Rename and change types of parameters
+    private View myView;
+
     private String mParam1;
     private String mParam2;
 
@@ -66,14 +80,28 @@ public class fragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        myView = inflater.inflate(R.layout.fragment_login, container, false);
+        return myView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button btnIniciarSesion = (Button)view.findViewById(R.id.btniniciarSesion) ;
         Button btnRegistrarse = (Button)view.findViewById(R.id.btnRegistrarse);
+
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextInputEditText etu = view.findViewById(R.id.usuet);
+                TextInputEditText etp = view.findViewById(R.id.passusu);
+                String usu = etu.getText().toString();
+                String pass = etp.getText().toString();
+                autenticarUsuario(usu,pass);
+            }
+        });
+
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,5 +111,37 @@ public class fragmentLogin extends Fragment {
                 transaction.commit();
             }
         });
+    }
+
+    private void autenticarUsuario(String usu, String pass) {
+        String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
+
+        StringRequest datos = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getContext(),"existe",Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"error xd",Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("nombre", usu);
+                parametros.put("nombre2", pass);
+                return parametros;
+            }
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> parametros = new HashMap<String, String>();
+                parametros.put("Content-Type", "application/x-www-form-urlencoded");
+                return parametros;
+            }
+        };
+
+        MySingleton.getInstance(getContext()).addToRequestQueue(datos);
     }
 }

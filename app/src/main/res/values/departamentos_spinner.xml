@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="departamentos_values">
+        <item>PAYSANDU</item>
+        <item>MONTEVIDEO</item>
+        <item>ARTIGAS</item>
+        <item>CANELONES</item>
+        <item>TACUAREMBO</item>
+        <item>CERRO LARGO</item>
+        <item>COLONIA</item>
+        <item>DURAZNO</item>
+        <item>FLORES</item>
+        <item>FLORIDA</item>
+        <item>LAVALLEJA</item>
+        <item>MALDONADO</item>
+        <item>RIO NEGRO</item>
+        <item>RIVERA</item>
+        <item>ROCHA</item>
+        <item>SALTO</item>
+        <item>SAN JOSE</item>
+        <item>SORIANO</item>
+        <item>TREINTA Y TRES</item>
+    </string-array>
+</resources>

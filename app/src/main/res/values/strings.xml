@@ -5,12 +5,15 @@
     <string name="iniciarSesion">INICIAR SESIÓN</string>
     <string name="registrarme">registrarme</string>
     <string name="registro_de_datos">Registro de datos</string>
-    <string name="nombre">Nombre</string>
-    <string name="apellido">Apellido</string>
+    <string name="nombre">Primer Nombre</string>
+    <string name="nombre2">Segundo Nombre</string>
+    <string name="apellido">Primer Apellido</string>
+    <string name="apellido2">Segundo Apellido</string>
     <string name="correo">Correo Electrónico</string>
     <string name="passwd">Contraseña</string>
     <string name="confirmar_passwd">Confirmar Contraseña</string>
     <string name="cedula">cedula</string>
+    <string name="Telefono">Telefono</string>
 
 
 </resources>

@@ -35,13 +35,13 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/shrek2"
+            android:id="@+id/TIcedula"
             android:hint="@string/cedula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="40dp"
-
             app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
             app:boxCornerRadiusBottomStart="@dimen/circle_radius"
             app:boxCornerRadiusTopEnd="@dimen/circle_radius"
@@ -55,6 +55,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:inputType="number"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:paddingStart="22dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,8 +70,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="40dp"
-            app:counterMaxLength="30"
-            app:counterEnabled="true"
             app:helperTextTextColor="#D50000"
             app:helperTextEnabled="true"
             app:errorEnabled="true"
@@ -85,8 +84,8 @@
                 android:id="@+id/tietnombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textPersonName"
                 android:paddingStart="22dp"
@@ -94,6 +93,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIapellido"
             style="@style/shrek2"
             android:hint="@string/apellido"
             android:layout_width="match_parent"
@@ -101,9 +101,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            app:counterMaxLength="30"
-            app:counterEnabled="true"
-            app:helperTextTextColor="#D50000"
+            app:helperTextTextColor="#171716"
             app:helperTextEnabled="true"
             app:errorEnabled="true"
             app:errorIconDrawable="@drawable/ic_baseline_error_24"
@@ -114,9 +112,10 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etapellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+                android:imeOptions="actionNext"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textPersonName"
                 android:maxLines="1"
@@ -125,15 +124,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIcorreo"
             style="@style/shrek2"
-            android:hint="@string/correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            app:counterMaxLength="60"
-            app:counterEnabled="true"
+            android:hint="@string/correo"
             app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
             app:boxCornerRadiusBottomStart="@dimen/circle_radius"
             app:boxCornerRadiusTopEnd="@dimen/circle_radius"
@@ -141,16 +139,45 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
                 android:paddingStart="22dp"
-
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TItelefono"
+            style="@style/shrek2"
+            android:hint="@string/Telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="clear_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ettelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="number"
+                android:maxLines="1"
+                android:imeOptions="actionNext"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIpassword"
             style="@style/shrek2"
             android:hint="@string/passwd"
             android:layout_width="match_parent"
@@ -158,8 +185,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            app:counterMaxLength="30"
-            app:counterEnabled="true"
             app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
             app:boxCornerRadiusBottomStart="@dimen/circle_radius"
             app:boxCornerRadiusTopEnd="@dimen/circle_radius"
@@ -167,6 +192,34 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:paddingStart="22dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIpassword2"
+            style="@style/shrek2"
+            android:hint="@string/confirmar_passwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -177,30 +230,52 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/shrek2"
-            android:hint="@string/confirmar_passwd"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            app:counterMaxLength="30"
-            app:counterEnabled="true"
             app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
             app:boxCornerRadiusBottomStart="@dimen/circle_radius"
             app:boxCornerRadiusTopEnd="@dimen/circle_radius"
             app:boxCornerRadiusTopStart="@dimen/circle_radius"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:hint="Departamento">
+            <AutoCompleteTextView
+                android:id="@+id/autoCompletedepartamentos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingStart="22dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:layout_height="match_parent"
+                android:inputType="none"
+            ></AutoCompleteTextView>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+            app:boxCornerRadiusTopStart="@dimen/circle_radius"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:hint="Localidad">
+            <AutoCompleteTextView
+                android:id="@+id/autoCompletelocalidades"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                ></AutoCompleteTextView>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="12dp"
+            android:text="Registrarme como empresa" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegistrarse2"
@@ -215,11 +290,7 @@
 
         </com.google.android.material.button.MaterialButton>
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="soy una empresa" />
+
 
         <TextView
             android:id="@+id/tvws"

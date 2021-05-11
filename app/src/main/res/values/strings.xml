@@ -5,14 +5,20 @@
     <string name="iniciarSesion">INICIAR SESIÓN</string>
     <string name="registrarme">registrarme</string>
     <string name="registro_de_datos">Registro de datos</string>
-    <string name="nombre">Nombre</string>
-    <string name="apellido">Apellido</string>
+    <string name="nombre">Primer Nombre</string>
+    <string name="nombre2">Segundo Nombre</string>
+    <string name="apellido">Primer Apellido</string>
+    <string name="apellido2">Segundo Apellido</string>
     <string name="correo">Correo Electrónico</string>
     <string name="passwd">Contraseña</string>
     <string name="confirmar_passwd">Confirmar Contraseña</string>
     <string name="cedula">cedula</string>
+<<<<<<< HEAD
     <string name="garka">garca</string>
     <string name="asdsad">asdsad</string>
+=======
+    <string name="Telefono">Telefono</string>
+>>>>>>> a1a2ce0cf6da0c965bc7fd4377b7a91dae8995c6
 
     <string name="RUT">Rut</string>
     <string name="RazonSocial">Razon Social</string>

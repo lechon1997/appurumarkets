@@ -3,8 +3,11 @@ package com.example.myapplication98.Controladores;
 import com.example.myapplication98.Fragmentos.fragmentBuscador;
 import com.example.myapplication98.Fragmentos.fragmentCarrito;
 import com.example.myapplication98.Fragmentos.fragmentCuenta;
+import com.example.myapplication98.Fragmentos.fragmentDatosCliente;
 import com.example.myapplication98.Fragmentos.fragmentInicio;
+import com.example.myapplication98.Fragmentos.fragmentLogeado;
 import com.example.myapplication98.Fragmentos.fragmentLogin;
+import com.example.myapplication98.Fragmentos.fragmentPrueba;
 import com.example.myapplication98.Fragmentos.fragmentRegistroEmpresa;
 import com.example.myapplication98.Fragmentos.fragmentRegistroUsuario;
 
@@ -17,6 +20,7 @@ public class ControladorVista{
     private fragmentLogin FGLogin;
     private fragmentRegistroUsuario FGRegistroUsuario;
     private fragmentRegistroEmpresa FGRegistroEmpreas;
+    private fragmentLogeado FGLogeado;
 
     private ControladorVista() {
         this.FGCarrito = null;
@@ -26,6 +30,7 @@ public class ControladorVista{
         this.FGLogin = null;
         this.FGRegistroUsuario = null;
         this.FGRegistroEmpreas = null;
+        this.FGLogeado = null;
     }
 
     public static ControladorVista getInstance(){
@@ -75,9 +80,7 @@ public class ControladorVista{
     }
 
     public fragmentLogin getFGLogin() {
-        if(FGLogin == null)
-            FGLogin = new fragmentLogin();
-        return FGLogin;
+        return new fragmentLogin();
     }
 
     public void clearFGLogin(){
@@ -102,4 +105,22 @@ public class ControladorVista{
     public void clearFGRegistroEmpresa(){
         FGRegistroEmpreas = null;
     }
+
+    public fragmentLogeado getFGlogeado(){
+        if(FGLogeado == null)
+            FGLogeado = new fragmentLogeado();
+        return FGLogeado;
+    }
+    public void clearFGLogeado(){
+        FGLogeado = null;
+    }
+
+    public fragmentDatosCliente getFGDatosCliente(){
+        return new fragmentDatosCliente();
+    }
+
+    public fragmentPrueba getFGPrueba(){
+        return new fragmentPrueba();
+    }
+
 }

@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -47,10 +49,18 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){
                 case R.id.primerFragmento:
-                    loadFragment(CV.getFGLogin());
+
+                    SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+                    boolean recordado = sharedPref.getBoolean("recordado",false);
+
+                    if(recordado){
+                        loadFragment(CV.getFGlogeado());
+                    } else
+                        loadFragment(CV.getFGLogin());
+
                     break;
                 case R.id.SegundoFragmento:
-                    loadFragment(CV.getFGCarrito());
+                    loadFragment(CV.getFGPrueba());
                     break;
                 case R.id.TercerFragmento:
                     loadFragment(CV.getFGInicio());

@@ -1,5 +1,7 @@
 package com.example.myapplication98.Fragmentos;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,23 +9,44 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
+import com.example.myapplication98.Modelo.Departamento;
+import com.example.myapplication98.Modelo.Localidad;
+import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,8 +63,12 @@ public class fragmentLogin extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private ControladorVista CV = ControladorVista.getInstance();
+    private ControladorUsuario CU = ControladorUsuario.getInstance();
     private View myView;
 
+    private Button btnIniciarSesion;
+    private Button btnRegistrarse;
+    private CheckBox cbRecuerdame;
     private String mParam1;
     private String mParam2;
 
@@ -88,8 +115,9 @@ public class fragmentLogin extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnIniciarSesion = (Button)view.findViewById(R.id.btniniciarSesion) ;
-        Button btnRegistrarse = (Button)view.findViewById(R.id.btnRegistrarse);
+        btnIniciarSesion = (Button)view.findViewById(R.id.btniniciarSesion) ;
+        btnRegistrarse = (Button)view.findViewById(R.id.btnRegistrarse);
+        cbRecuerdame = (CheckBox)view.findViewById(R.id.checkBox);
 
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,34 +142,105 @@ public class fragmentLogin extends Fragment {
     }
 
     private void autenticarUsuario(String usu, String pass) {
-        String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
+        //String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
 
-        StringRequest datos = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getContext(),"existe",Toast.LENGTH_SHORT).show();
+        String LOGIN_REQUEST_URL = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
+
+        // JSON data
+        JSONObject jsonObject = new JSONObject();
+        try{
+            jsonObject.put("email", usu);
+            jsonObject.put("password", pass);
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        // Json request
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                LOGIN_REQUEST_URL,
+                jsonObject,
+                new Response.Listener<JSONObject>(){
+                    @Override
+                    public void onResponse(JSONObject response){
+
+
+                        try {
+                            JSONObject jo = response.getJSONObject("respuesta");
+                            if(jo.optString("estado").equals("ok")){
+
+                                Usuario usuario = new Usuario();
+                                Departamento departamento = new Departamento();
+                                Localidad localidad = new Localidad();
+
+                                usuario.setId(jo.optInt("id"));
+                                usuario.setPrimer_nombre(jo.optString("pnombre"));
+                                usuario.setSegundo_nombre(jo.optString("snombre"));
+                                usuario.setPrimer_apellido(jo.optString("papellido"));
+                                usuario.setSegundo_apellido(jo.optString("sapellido"));
+                                usuario.setCedula(jo.optString("cedula"));
+                                usuario.setTelefono(jo.getString("telefono"));
+                                usuario.setEmail(jo.getString("email"));
+
+                                departamento.setId(jo.optInt("idDepartamento"));
+                                departamento.setNombre(jo.optString("nomDepartamento"));
+
+                                localidad.setId(jo.optInt("idLocalidad"));
+                                localidad.setNombre(jo.optString("nomLocalidad"));
+
+                                usuario.setDepartamento(departamento);
+                                usuario.setLocalidad(localidad);
+                                CU.setUsuario(usuario);
+
+                                if(cbRecuerdame.isChecked()){
+                                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    Gson gson = new Gson();
+                                    String jsonUsuario = gson.toJson(usuario);
+                                    editor.putString(jo.getString("email"),jsonUsuario);
+                                    editor.putString("usuarioRecordado",jo.getString("email"));
+                                    editor.putBoolean("recordado",true);
+                                    editor.commit();
+                                }
+
+
+                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                transaction.replace(R.id.fragmentConteiner,CV.getFGlogeado());
+                                transaction.commit();
+
+                            }else if (jo.optString("estado").equals("incorrecto"))
+                                Toast.makeText(getContext(),"incorrecto",Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getContext(),"shrek",Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
             }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(),"error xd",Toast.LENGTH_SHORT).show();
+
+                if (error instanceof NetworkError) {
+                    Toast.makeText(getContext(), "Can't connect to Internet. Please check your connection.", Toast.LENGTH_LONG).show();
+                }
+                else if (error instanceof ServerError) {
+                    Toast.makeText(getContext(), "Unable to login. Either the username or password is incorrect.", Toast.LENGTH_LONG).show();
+                }
+                else if (error instanceof ParseError) {
+                    Toast.makeText(getContext(), "Parsing error. Please try again.", Toast.LENGTH_LONG).show();
+                }
+                error.printStackTrace();
             }
-        }) {
+        }){
+
             @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parametros = new HashMap<String, String>();
-                parametros.put("nombre", usu);
-                parametros.put("nombre2", pass);
-                return parametros;
-            }
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> parametros = new HashMap<String, String>();
-                parametros.put("Content-Type", "application/x-www-form-urlencoded");
-                return parametros;
+            public Map<String,String> getHeaders() throws AuthFailureError {
+                Map<String,String> headers = new HashMap<String,String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
             }
         };
 
-        MySingleton.getInstance(getContext()).addToRequestQueue(datos);
+        RequestQueue queue = MySingleton.getInstance(getContext()).getRequestQueue();
+        MySingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
     }
 }

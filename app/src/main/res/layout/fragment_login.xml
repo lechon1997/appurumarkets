@@ -25,7 +25,7 @@
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
-            android:text="MarketsUy"
+            android:text="e-UruMarkets"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="#212121"
             android:textSize="36sp"
@@ -51,8 +51,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:inputType="textNoSuggestions"
+                android:inputType="textEmailAddress"
                 android:paddingStart="22dp"
+                android:imeOptions="actionNext"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDatosP"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="36dp"
+                android:paddingRight="28dp"
+                android:text="DATOS PERSONALES"
+                android:textStyle="bold"
+                app:cornerRadius="0dp" />
+
+            <FrameLayout
+                android:id="@+id/contenedorDatosP"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDatosCompra"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="36dp"
+                android:paddingRight="28dp"
+                android:text="MIS COMPRAS"
+                android:textStyle="bold"
+                app:cornerRadius="0dp" />
+
+            <FrameLayout
+                android:id="@+id/contenedorDatosCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCerrarSesion"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="36dp"
+                android:paddingRight="28dp"
+                android:text="Cerrar Sesión"
+                android:textStyle="bold"
+                app:cornerRadius="0dp" />
+
+        </LinearLayout>
+
+
+</FrameLayout>

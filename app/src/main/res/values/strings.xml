@@ -13,12 +13,9 @@
     <string name="passwd">Contraseña</string>
     <string name="confirmar_passwd">Confirmar Contraseña</string>
     <string name="cedula">cedula</string>
-<<<<<<< HEAD
-    <string name="garka">garca</string>
-    <string name="asdsad">asdsad</string>
-=======
+
     <string name="Telefono">Telefono</string>
->>>>>>> a1a2ce0cf6da0c965bc7fd4377b7a91dae8995c6
+
 
     <string name="RUT">Rut</string>
     <string name="RazonSocial">Razon Social</string>

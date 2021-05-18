@@ -362,7 +362,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
 
     private void getDepartamentosWS(int id) {
 
-        String url = "http://192.168.1.11/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
+        String url = "http://192.168.1.7/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -411,7 +411,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
     }
 
     private void cargarWS(String cedula, String nombre, String nombre2, String apellido, String apellido2, String correo, String telefono, String passwd, String passwd2) {
-        String url = "http://192.168.1.11/urumarkets/public/api/altaUsuws";
+        String url = "http://192.168.1.7/urumarkets/public/api/altaUsuws";
 
         StringRequest datos = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

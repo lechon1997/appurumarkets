@@ -2,6 +2,7 @@ package com.example.myapplication98.Modelo;
 
 public class Usuario {
     private int id;
+    private String tipoUsuario;
     private String primer_nombre;
     private String segundo_nombre;
     private String primer_apellido;
@@ -11,8 +12,39 @@ public class Usuario {
     private String telefono;
     private String nombre_departamento;
     private String nombre_localidad;
+    private String password;
     private Departamento departamento;
     private Localidad localidad;
+
+    public Usuario() {
+    }
+
+    public Usuario(String primer_nombre, String primer_apellido, String email, String cedula, String telefono, Departamento departamento, Localidad localidad,String pass) {
+        this.primer_nombre = primer_nombre;
+        this.primer_apellido = primer_apellido;
+        this.email = email;
+        this.cedula = cedula;
+        this.telefono = telefono;
+        this.departamento = departamento;
+        this.localidad = localidad;
+        this.password = pass;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getId() {
         return id;
@@ -38,8 +70,7 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-    public Usuario() {
-    }
+
 
     public String getPrimer_nombre() {
         return primer_nombre;

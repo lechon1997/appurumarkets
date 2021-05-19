@@ -4,6 +4,7 @@ import com.example.myapplication98.Fragmentos.fragmentBuscador;
 import com.example.myapplication98.Fragmentos.fragmentCarrito;
 import com.example.myapplication98.Fragmentos.fragmentCuenta;
 import com.example.myapplication98.Fragmentos.fragmentDatosCliente;
+import com.example.myapplication98.Fragmentos.fragmentDatosEmpresa;
 import com.example.myapplication98.Fragmentos.fragmentInicio;
 import com.example.myapplication98.Fragmentos.fragmentLogeado;
 import com.example.myapplication98.Fragmentos.fragmentLogin;
@@ -122,5 +123,10 @@ public class ControladorVista{
     public fragmentPrueba getFGPrueba(){
         return new fragmentPrueba();
     }
+
+    public fragmentDatosEmpresa getFGDatosEmpresa(){
+        return new fragmentDatosEmpresa();
+    }
+
 
 }

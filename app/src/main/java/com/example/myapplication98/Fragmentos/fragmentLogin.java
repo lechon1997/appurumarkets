@@ -173,6 +173,7 @@ public class fragmentLogin extends Fragment {
                                 Localidad localidad = new Localidad();
 
                                 usuario.setId(jo.optInt("id"));
+                                usuario.setTipoUsuario(jo.optString("tipoUsu"));
                                 usuario.setPrimer_nombre(jo.optString("pnombre"));
                                 usuario.setSegundo_nombre(jo.optString("snombre"));
                                 usuario.setPrimer_apellido(jo.optString("papellido"));
@@ -204,7 +205,7 @@ public class fragmentLogin extends Fragment {
 
 
                                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragmentConteiner,CV.getFGlogeado());
+                                transaction.replace(R.id.fragmentConteiner,CV.getFGInicio());
                                 transaction.commit();
 
                             }else if (jo.optString("estado").equals("incorrecto"))

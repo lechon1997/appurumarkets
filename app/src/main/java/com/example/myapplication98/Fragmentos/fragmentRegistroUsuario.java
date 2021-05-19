@@ -30,7 +30,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
+import com.example.myapplication98.Modelo.Departamento;
+import com.example.myapplication98.Modelo.Localidad;
+import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -58,6 +62,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private ControladorVista CV = ControladorVista.getInstance();
+    private ControladorUsuario CU = ControladorUsuario.getInstance();
 
     private Map<Integer,Integer> localidades;
     private List<String> localidadesNombre;
@@ -345,24 +350,30 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
                     CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox2);
 
                     if (checkBox.isChecked()) {
+                        Departamento dep = new Departamento();
+                        Localidad loc = new Localidad();
+
+                        dep.setId(idDepartamento);
+                        loc.setId(idLocalidad);
+
+                        Usuario u = new Usuario(nombre,apellido,correo,cedula,telefono,dep,loc,passwd);
+                        CU.setUsuarioEnMemoria(u);
+
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragmentConteiner, CV.getFGRegistroEmpreas());
                         transaction.commit();
                     }else{
                         cargarWS(cedula, nombre, "", apellido, "", correo, telefono, passwd, passwd2);
                     }
-
-
                 }
             }
         });
-
     }
 
 
     private void getDepartamentosWS(int id) {
 
-        String url = "http://192.168.1.7/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
+        String url = "http://192.168.1.11/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -411,7 +422,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
     }
 
     private void cargarWS(String cedula, String nombre, String nombre2, String apellido, String apellido2, String correo, String telefono, String passwd, String passwd2) {
-        String url = "http://192.168.1.7/urumarkets/public/api/altaUsuws";
+        String url = "http://192.168.1.11/urumarkets/public/api/altaUsuws";
 
         StringRequest datos = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

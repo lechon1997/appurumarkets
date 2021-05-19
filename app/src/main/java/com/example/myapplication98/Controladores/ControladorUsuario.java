@@ -6,7 +6,7 @@ public class ControladorUsuario {
     private static ControladorUsuario Instance = null;
 
     private Usuario usuario;
-
+    private Usuario usuarioEnMemoria; // reemplazar con bundle
     private ControladorUsuario() {
 
     }
@@ -16,6 +16,14 @@ public class ControladorUsuario {
             Instance = new ControladorUsuario();
         return Instance;
 
+    }
+
+    public Usuario getUsuarioEnMemoria() {
+        return usuarioEnMemoria;
+    }
+
+    public void setUsuarioEnMemoria(Usuario usuarioEnMemoria) {
+        this.usuarioEnMemoria = usuarioEnMemoria;
     }
 
     public Usuario getUsuario() {

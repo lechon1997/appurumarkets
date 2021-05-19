@@ -1,67 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="0"
+        android:visibility="visible">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDatosP"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="28dp"
+            android:text="DATOS PERSONALES"
+            android:textStyle="bold"
+            app:cornerRadius="0dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDatosP"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="36dp"
-                android:paddingRight="28dp"
-                android:text="DATOS PERSONALES"
-                android:textStyle="bold"
-                app:cornerRadius="0dp" />
+        <FrameLayout
+            android:id="@+id/contenedorDatosP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <FrameLayout
-                android:id="@+id/contenedorDatosP"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
+        </FrameLayout>
 
-            </FrameLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDatosEmpresa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="28dp"
+            android:text="DATOS EMPRESA"
+            android:textStyle="bold"
+            app:cornerRadius="0dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnDatosCompra"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="36dp"
-                android:paddingRight="28dp"
-                android:text="MIS COMPRAS"
-                android:textStyle="bold"
-                app:cornerRadius="0dp" />
+        <FrameLayout
+            android:id="@+id/contenedorDatosCompra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <FrameLayout
-                android:id="@+id/contenedorDatosCompra"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </FrameLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCerrarSesion"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="36dp"
-                android:paddingRight="28dp"
-                android:text="Cerrar Sesión"
-                android:textStyle="bold"
-                app:cornerRadius="0dp" />
-
-        </LinearLayout>
+        </FrameLayout>
 
 
-</FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCerrarSesion"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="20dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="28dp"
+            android:text="Cerrar Sesión"
+            android:textStyle="bold"
+            app:cornerRadius="0dp" />
+
+    </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

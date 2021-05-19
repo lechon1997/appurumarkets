@@ -18,7 +18,9 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
+import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 
 /**
@@ -32,18 +34,27 @@ public class fragmentLogeado extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ControladorUsuario CU = ControladorUsuario.getInstance();
     private ControladorVista CV = ControladorVista.getInstance();
+
+    private Button btnDatosP;
+    private Button btnDatosV;
+    private Button btnCerrarS;
+
+    private Fragment fragment;
+    private Fragment fragment2;
     private View myView;
     private boolean isBig;
+    private boolean isBig2;
 
     private boolean verDatosP;
-    Fragment fragment;
 
     private String mParam1;
     private String mParam2;
 
     public fragmentLogeado() {
         isBig = false;
+        isBig2 = false;
         // Required empty public constructor
     }
 
@@ -85,17 +96,53 @@ public class fragmentLogeado extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btnDatosP = myView.findViewById(R.id.btnDatosP);
-        Button btnCerrarS = myView.findViewById(R.id.btnCerrarSesion);
+        btnDatosP = myView.findViewById(R.id.btnDatosP);
+        btnDatosV = myView.findViewById(R.id.btnDatosEmpresa);
+        btnCerrarS = myView.findViewById(R.id.btnCerrarSesion);
 
+        Usuario u = CU.getUsuario();
+        if(u.getTipoUsuario().equals("cliente")){
+            btnDatosV.setVisibility(View.INVISIBLE);
+            btnDatosV.setHeight(0);
+        }
+
+        /*
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.contenedorDatosP,CV.getFGDatosCliente());
         transaction.commit();
+        */
+        btnDatosV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isBig2){
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    fragment2 = CV.getFGDatosEmpresa();
+                    transaction.replace(R.id.contenedorDatosCompra,fragment2);
+                    transaction.commit();
+                    isBig2 = true;
+                }else{
+                    getFragmentManager().beginTransaction().remove(fragment2).commit();
+                    isBig2 = false;
+                }
 
+            }
+        });
 
         btnDatosP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!isBig){
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    fragment = CV.getFGDatosCliente();
+                    transaction.replace(R.id.contenedorDatosP,fragment);
+                    transaction.commit();
+                    isBig = true;
+                }else{
+                    getFragmentManager().beginTransaction().remove(fragment).commit();
+                    isBig = false;
+                }
+
+                /*
                 FrameLayout ctn = myView.findViewById(R.id.contenedorDatosP);
                 ctn.setPivotY(0f);
                 if(!isBig){
@@ -113,6 +160,8 @@ public class fragmentLogeado extends Fragment {
                     scaleY.start();
                     isBig = false;
                 }
+
+                */
             }
         });
 

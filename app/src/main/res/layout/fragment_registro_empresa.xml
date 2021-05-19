@@ -27,7 +27,7 @@
             android:layout_marginTop="40dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
-            android:text="@string/registro_de_datos"
+            android:text="@string/registro_de_empresa"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="#212121"
             android:textSize="36sp"
@@ -50,6 +50,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
+                android:id="@+id/etrut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -83,12 +84,13 @@
 
             <com.google.android.material.textfield.TextInputEditText
 
+                android:id="@+id/razonsocial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-                android:maxLines="1"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textPersonName"
+                android:maxLines="1"
                 android:paddingStart="22dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -114,6 +116,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nomfantasia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
@@ -174,6 +177,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etrubro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -202,7 +206,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edittext"
+                android:id="@+id/ettel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -229,6 +233,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etdire"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -255,6 +260,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etdesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -277,8 +283,13 @@
 
         </com.google.android.material.button.MaterialButton>
 
-
+    <TextView
+        android:id="@+id/tvres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="respuesta: "></TextView>
     </LinearLayout>
+
 
 
 

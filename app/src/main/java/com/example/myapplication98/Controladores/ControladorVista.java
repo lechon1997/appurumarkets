@@ -11,6 +11,7 @@ import com.example.myapplication98.Fragmentos.fragmentLogin;
 import com.example.myapplication98.Fragmentos.fragmentPrueba;
 import com.example.myapplication98.Fragmentos.fragmentRegistroEmpresa;
 import com.example.myapplication98.Fragmentos.fragmentRegistroUsuario;
+import com.example.myapplication98.Fragmentos.fragment_edit_inf_usu;
 
 public class ControladorVista{
     private static ControladorVista Instance = null;
@@ -108,9 +109,7 @@ public class ControladorVista{
     }
 
     public fragmentLogeado getFGlogeado(){
-        if(FGLogeado == null)
-            FGLogeado = new fragmentLogeado();
-        return FGLogeado;
+        return new fragmentLogeado();
     }
     public void clearFGLogeado(){
         FGLogeado = null;
@@ -126,6 +125,10 @@ public class ControladorVista{
 
     public fragmentDatosEmpresa getFGDatosEmpresa(){
         return new fragmentDatosEmpresa();
+    }
+
+    public fragment_edit_inf_usu getFGEditarDatosUsu(){
+        return new fragment_edit_inf_usu();
     }
 
 

@@ -190,13 +190,15 @@
 
 
     </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditarDatos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cornerRadius="0dp"
-            android:textStyle="bold"
             android:layout_marginBottom="12dp"
-            android:text="editar datos"></com.google.android.material.button.MaterialButton>
+            android:text="editar datos"
+            android:textStyle="bold"
+            app:cornerRadius="0dp"></com.google.android.material.button.MaterialButton>
     </LinearLayout>
 
 </FrameLayout>

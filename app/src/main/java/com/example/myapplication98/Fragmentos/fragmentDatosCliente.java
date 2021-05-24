@@ -7,13 +7,16 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication98.Controladores.ControladorUsuario;
+import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.google.gson.Gson;
@@ -32,6 +35,7 @@ public class fragmentDatosCliente extends Fragment {
 
     private View myView;
     private ControladorUsuario CU = ControladorUsuario.getInstance();
+    private ControladorVista   CV = ControladorVista.getInstance();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -94,7 +98,7 @@ public class fragmentDatosCliente extends Fragment {
         } else
             usuario = CU.getUsuario();
 
-
+        //SETEO DE DE LA INFORMACIÓN DEL USUARIO
 
         TextView tvNombre = myView.findViewById(R.id.tvSetNombre);
         TextView tvApellido = myView.findViewById(R.id.tvSetApellido);
@@ -112,6 +116,14 @@ public class fragmentDatosCliente extends Fragment {
         tvDepartamento.setText(usuario.getDepartamento().getNombre());
         tvLocalidad.setText(usuario.getLocalidad().getNombre());
 
-
+        Button btnEdit = myView.findViewById(R.id.btnEditarDatos);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentConteiner,CV.getFGEditarDatosUsu());
+                transaction.commit();
+            }
+        });
     }
 }

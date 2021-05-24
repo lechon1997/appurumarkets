@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="departamentos_values">
-        <item>PAYSANDU</item>
+        <item >PAYSANDU</item>
         <item>MONTEVIDEO</item>
         <item>ARTIGAS</item>
         <item>CANELONES</item>

@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".Fragmentos.fragmentRegistroUsuario">
+    tools:context=".Fragmentos.fragment_edit_inf_usu">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,13 +21,12 @@
         android:paddingBottom="80dp">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/open_sans"
             android:gravity="center_horizontal"
-            android:text="@string/registro_de_datos"
+            android:text="@string/editar_informaci_n"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:textColor="#212121"
             android:textSize="36sp"
@@ -49,7 +48,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etci"
+                android:id="@+id/etci2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -81,7 +80,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietnombre"
+                android:id="@+id/tietnombre2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
@@ -112,7 +111,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etapellido"
+                android:id="@+id/etapellido2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -139,7 +138,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etcorreo"
+                android:id="@+id/etcorreo2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -165,66 +164,13 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ettelefono"
+                android:id="@+id/ettelefono2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="number"
                 android:maxLines="1"
                 android:imeOptions="actionNext"
-                android:paddingStart="22dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TIpassword"
-            style="@style/shrek2"
-            android:hint="@string/passwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
-            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
-            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
-            app:boxCornerRadiusTopStart="@dimen/circle_radius"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="textPassword"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:paddingStart="22dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TIpassword2"
-            style="@style/shrek2"
-            android:hint="@string/confirmar_passwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
-            app:boxCornerRadiusBottomStart="@dimen/circle_radius"
-            app:boxCornerRadiusTopEnd="@dimen/circle_radius"
-            app:boxCornerRadiusTopStart="@dimen/circle_radius"
-            app:endIconMode="password_toggle">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pass2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:inputType="textPassword"
-                android:maxLines="1"
                 android:paddingStart="22dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -242,11 +188,11 @@
             android:layout_marginEnd="22dp"
             android:hint="Departamento">
             <AutoCompleteTextView
-                android:id="@+id/autoCompletedepartamentos"
+                android:id="@+id/autoCompletedDep2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
-            ></AutoCompleteTextView>
+                ></AutoCompleteTextView>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -262,20 +208,12 @@
             android:layout_marginEnd="22dp"
             android:hint="Localidad">
             <AutoCompleteTextView
-                android:id="@+id/autoCompletelocalidades"
+                android:id="@+id/autoCompleteloc2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
                 ></AutoCompleteTextView>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
-            android:layout_marginTop="12dp"
-            android:text="Registrarme como empresa" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirmarInfo"
@@ -284,7 +222,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:minHeight="55dp"
-            android:text="@string/registrarme"
+            android:text="@string/confirmar"
             android:textStyle="bold"
             app:cornerRadius="16dp">
 
@@ -292,16 +230,7 @@
 
 
 
-        <TextView
-            android:id="@+id/tvws"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="xd"
-            android:textColor="#F50057" />
-
-
     </LinearLayout>
-
 
 
 

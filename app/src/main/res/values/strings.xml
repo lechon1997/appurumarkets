@@ -25,6 +25,8 @@
     <string name="descripcion">Descripcion</string>
     <string name="finalizar">Finalizar</string>
     <string name="ModificarDatosEmpresa">Modificar Datos Empresa</string>
+    <string name="editar_informaci_n">EDITAR DATOS</string>
+    <string name="confirmar">Confirmar</string>
 
     <string-array name="arraytipoorg">
         <item>ONG</item>

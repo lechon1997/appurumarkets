@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
@@ -13,14 +12,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,7 +26,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -146,7 +142,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
 
 
         etNombre = view.findViewById(R.id.tietnombre);
-        btnR = view.findViewById(R.id.btnRegistrarse2);
+        btnR = view.findViewById(R.id.btnConfirmarInfo);
         etCi = view.findViewById(R.id.etci);
         etApellido = view.findViewById(R.id.etapellido);
         etCorreo = view.findViewById(R.id.etcorreo);

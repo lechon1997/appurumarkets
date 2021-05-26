@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
                     boolean recordado = sharedPref.getBoolean("recordado",false);
 
-                    if(recordado){
+                    if(recordado || CU.getSession()){
                         loadFragment(CV.getFGlogeado());
-                    } else
+                    } else{
                         loadFragment(CV.getFGLogin());
-
+                    }
                     break;
                 case R.id.SegundoFragmento:
                     loadFragment(CV.getFGPrueba());

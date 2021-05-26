@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -142,7 +143,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
 
 
         etNombre = view.findViewById(R.id.tietnombre);
-        btnR = view.findViewById(R.id.btnConfirmarInfo);
+        btnR = view.findViewById(R.id.btnConfirmarInfoLeo);
         etCi = view.findViewById(R.id.etci);
         etApellido = view.findViewById(R.id.etapellido);
         etCorreo = view.findViewById(R.id.etcorreo);
@@ -369,7 +370,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
 
     private void getDepartamentosWS(int id) {
 
-        String url = "http://192.168.1.11/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
+        String url = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -418,7 +419,7 @@ public class fragmentRegistroUsuario extends Fragment implements Response.Listen
     }
 
     private void cargarWS(String cedula, String nombre, String nombre2, String apellido, String apellido2, String correo, String telefono, String passwd, String passwd2) {
-        String url = "http://192.168.1.11/urumarkets/public/api/altaUsuws";
+        String url = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/altaUsuws";
 
         StringRequest datos = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

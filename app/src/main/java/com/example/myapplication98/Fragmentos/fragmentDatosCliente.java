@@ -85,18 +85,7 @@ public class fragmentDatosCliente extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-
-        boolean recordado = sharedPref.getBoolean("recordado",false);
-        Usuario usuario = null;
-
-        if(recordado){
-            String usuKey = sharedPref.getString("usuarioRecordado","asd");
-            String datos = sharedPref.getString(usuKey,"asd");
-            Gson gson = new Gson();
-            usuario = gson.fromJson(datos, Usuario.class);
-        } else
-            usuario = CU.getUsuario();
+        Usuario usuario = CU.getUsuario();
 
         //SETEO DE DE LA INFORMACIÓN DEL USUARIO
 

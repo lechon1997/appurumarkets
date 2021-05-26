@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,7 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -36,6 +35,7 @@ import com.example.myapplication98.Modelo.Localidad;
 import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
@@ -124,20 +124,10 @@ public class fragment_edit_inf_usu extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-
-        boolean recordado = sharedPref.getBoolean("recordado",false);
-        Usuario usuario = null;
-
+        Usuario usuario = CU.getUsuario();
+        this.usu = usuario;
         //CHEQUEO SI EL USUARIO ESTÁ RECORDADO
-        if(recordado){
-            String usuKey = sharedPref.getString("usuarioRecordado","asd");
-            String datos = sharedPref.getString(usuKey,"asd");
-            Gson gson = new Gson();
-            usuario = gson.fromJson(datos, Usuario.class);
-            usu = usuario;
-        } else
-            usuario = CU.getUsuario();
+
 
         //EXTRAIGO LOS ELEMENTOS DE LA VISTA DEL FRAGMENTO
         TextInputEditText tietCedula = myView.findViewById(R.id.etci2);
@@ -191,7 +181,7 @@ public class fragment_edit_inf_usu extends Fragment {
         tietTelefono.setText(usuario.getTelefono());
 
         //EVENTO CONFIRMAR INFORMACION
-        Button btnConfirmar = myView.findViewById(R.id.btnConfirmarInfo);
+        MaterialButton btnConfirmar = myView.findViewById(R.id.btnConfirmarInfoLeo);
         btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,7 +196,7 @@ public class fragment_edit_inf_usu extends Fragment {
     }
 
     private void getLocalidades(int id) {
-        String url = "http://192.168.1.11/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
+        String url = "http://"+ Config.IP_LOCAL_HOST + "/urumarkets/public/api/getLocalidades?id="+String.valueOf(id);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -261,7 +251,7 @@ public class fragment_edit_inf_usu extends Fragment {
 
     private void cargarWS(String cedula, String nombre, String apellido, String correo, String telefono) {
 
-        String LOGIN_REQUEST_URL = "http://192.168.1.11/urumarkets/public/api/actualizarDatosU";
+        String LOGIN_REQUEST_URL = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/actualizarDatosU";
 
         // JSON data
         JSONObject jsonObject = new JSONObject();
@@ -294,13 +284,44 @@ public class fragment_edit_inf_usu extends Fragment {
                             JSONObject jo = response.getJSONObject("respuesta");
                             if(jo.optString("estado").equals("ok")){
 
-                                Toast.makeText(getContext(),"OK",Toast.LENGTH_SHORT).show();
+                                //RANCIADA COSMICA PERO BUENA :)
+                                Usuario usuario = new Usuario();
+                                Departamento departamento = new Departamento();
+                                Localidad localidad = new Localidad();
 
-                                /*
+                                usuario.setId(jo.optInt("id"));
+                                usuario.setTipoUsuario(jo.optString("tipoUsu"));
+                                usuario.setPrimer_nombre(jo.optString("pnombre"));
+                                usuario.setSegundo_nombre(jo.optString("snombre"));
+                                usuario.setPrimer_apellido(jo.optString("papellido"));
+                                usuario.setSegundo_apellido(jo.optString("sapellido"));
+                                usuario.setCedula(jo.optString("cedula"));
+                                usuario.setTelefono(jo.getString("telefono"));
+                                usuario.setEmail(jo.getString("email"));
+
+                                departamento.setId(jo.optInt("idDepartamento"));
+                                departamento.setNombre(jo.optString("nomDepartamento"));
+
+                                localidad.setId(jo.optInt("idLocalidad"));
+                                localidad.setNombre(jo.optString("nomLocalidad"));
+
+                                usuario.setDepartamento(departamento);
+                                usuario.setLocalidad(localidad);
+                                CU.setUsuario(usuario);
+
+                                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                                boolean recordado = sharedPref.getBoolean("recordado",false);
+
+                                if(recordado){
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    Gson gson = new Gson();
+                                    String jsonUsuario = gson.toJson(usuario);
+                                    editor.putString(jo.getString("email"), jsonUsuario);
+                                    editor.commit();
+                                }
                                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragmentConteiner,CV.getFGInicio());
+                                transaction.replace(R.id.fragmentConteiner,CV.getFGlogeado());
                                 transaction.commit();
-                                */
 
                             }else if (jo.optString("estado").equals("incorrecto"))
                                 Toast.makeText(getContext(),"incorrecto",Toast.LENGTH_SHORT).show();
@@ -318,7 +339,7 @@ public class fragment_edit_inf_usu extends Fragment {
                     Toast.makeText(getContext(), "Can't connect to Internet. Please check your connection.", Toast.LENGTH_LONG).show();
                 }
                 else if (error instanceof ServerError) {
-                    Toast.makeText(getContext(), "Unable to login. Either the username or password is incorrect.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 else if (error instanceof ParseError) {
                     Toast.makeText(getContext(), "Parsing error. Please try again.", Toast.LENGTH_LONG).show();

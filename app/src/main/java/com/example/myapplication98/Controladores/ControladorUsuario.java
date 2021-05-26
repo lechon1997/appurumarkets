@@ -7,8 +7,22 @@ public class ControladorUsuario {
 
     private Usuario usuario;
     private Usuario usuarioEnMemoria; // reemplazar con bundle
-    private ControladorUsuario() {
+    private boolean SesionIniciada;
 
+    public  void setSession(){
+        SesionIniciada = true;
+    }
+
+    public void setCerrarSession(){
+        SesionIniciada = false;
+    }
+
+    public boolean getSession(){
+        return SesionIniciada;
+    }
+
+    private ControladorUsuario() {
+        SesionIniciada = false;
     }
 
     public static ControladorUsuario getInstance() {

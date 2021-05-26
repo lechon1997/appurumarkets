@@ -106,11 +106,6 @@ public class fragmentLogeado extends Fragment {
             btnDatosV.setHeight(0);
         }
 
-        /*
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.contenedorDatosP,CV.getFGDatosCliente());
-        transaction.commit();
-        */
         btnDatosV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

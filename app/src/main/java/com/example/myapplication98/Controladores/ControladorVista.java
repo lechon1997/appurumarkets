@@ -11,7 +11,9 @@ import com.example.myapplication98.Fragmentos.fragmentLogin;
 import com.example.myapplication98.Fragmentos.fragmentPrueba;
 import com.example.myapplication98.Fragmentos.fragmentRegistroEmpresa;
 import com.example.myapplication98.Fragmentos.fragmentRegistroUsuario;
+import com.example.myapplication98.Fragmentos.fragmentVerProducto;
 import com.example.myapplication98.Fragmentos.fragment_edit_inf_usu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ControladorVista{
     private static ControladorVista Instance = null;
@@ -20,6 +22,7 @@ public class ControladorVista{
     private fragmentInicio FGInicio;
     private fragmentBuscador FGBuscador;
     private fragmentLogin FGLogin;
+    private BottomNavigationView navigation;
     private fragmentRegistroUsuario FGRegistroUsuario;
     private fragmentRegistroEmpresa FGRegistroEmpreas;
     private fragmentLogeado FGLogeado;
@@ -39,6 +42,14 @@ public class ControladorVista{
         if(Instance == null)
             Instance = new ControladorVista();
         return Instance;
+    }
+
+    public BottomNavigationView getNavigation() {
+        return navigation;
+    }
+
+    public void setNavigation(BottomNavigationView navigation) {
+        this.navigation = navigation;
     }
 
     public fragmentCarrito getFGCarrito() {
@@ -131,5 +142,8 @@ public class ControladorVista{
         return new fragment_edit_inf_usu();
     }
 
+    public fragmentVerProducto getFGVerProducto(){
+        return new fragmentVerProducto();
+    }
 
 }

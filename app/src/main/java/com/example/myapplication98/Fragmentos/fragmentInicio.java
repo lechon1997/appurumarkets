@@ -27,6 +27,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.myapplication98.Adaptadores.AdapterPublicacion;
 import com.example.myapplication98.Config;
+import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
 import com.example.myapplication98.Modelo.Localidad;
 import com.example.myapplication98.Modelo.Publicacion;
@@ -56,6 +57,7 @@ public class fragmentInicio extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private View myView;
+    private ControladorVista CV = ControladorVista.getInstance();
     private AdapterPublicacion adapterPublicacion;
     private RecyclerView recyclerViewPublicacion;
     private ArrayList<Publicacion> ListaPublicaciones;
@@ -105,6 +107,7 @@ public class fragmentInicio extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        CV.getNavigation().setVisibility(View.VISIBLE);
         recyclerViewPublicacion = myView.findViewById(R.id.recycler_view);
         ListaPublicaciones = new ArrayList<>();
         getPublicaciones();
@@ -118,15 +121,9 @@ public class fragmentInicio extends Fragment {
 
     private void MostrarLista() {
         recyclerViewPublicacion.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterPublicacion = new AdapterPublicacion(getContext(),ListaPublicaciones);
+        adapterPublicacion = new AdapterPublicacion(getContext(),ListaPublicaciones,this);
         recyclerViewPublicacion.setAdapter(adapterPublicacion);
-        adapterPublicacion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String titulo = ListaPublicaciones.get(recyclerViewPublicacion.getChildAdapterPosition(v)).getTitulo();
-                Toast.makeText(getContext(),titulo,Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     private void getPublicaciones() {
@@ -151,8 +148,11 @@ public class fragmentInicio extends Fragment {
                                 JSONObject jo = ja.getJSONObject(i);
                                 String titulo = jo.optString("titulo");
                                 int precio = jo.optInt("precio");
+                                int stock = jo.optInt("stock");
+                                String descripcion = jo.optString("descripcion");
                                 String img = jo.optString("foto");
-                                publicacion = new Publicacion(titulo, precio, img);
+                                double dsc = jo.optDouble("porcentajeOferta");
+                                publicacion = new Publicacion(titulo, precio, img,dsc,stock,descripcion);
                                 ListaPublicaciones.add(publicacion);
                             }
                             MostrarLista();
@@ -188,6 +188,4 @@ public class fragmentInicio extends Fragment {
         RequestQueue queue = MySingleton.getInstance(getContext()).getRequestQueue();
         MySingleton.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
     }
-
-
 }

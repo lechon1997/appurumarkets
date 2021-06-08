@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -32,6 +35,7 @@ import com.example.myapplication98.Modelo.Localidad;
 import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 
@@ -97,8 +101,8 @@ public class AltaProducto extends Fragment {
         }
     }
 
-    private void autenticarUsuario(String nombreProducto, String descripcionProducto, String stock, String checkboxOferta, String checkboxTienePrecio, String tipoMoneda, String precioProducto,
-                                   String productosPorPersona, String porcentajeOfertaProducto, String estadoProducto, String publicacion) {
+    private void AltaProducto(String nombreProducto, String descripcionProducto, String stock, String checkboxOferta, String checkboxTienePrecio, String tipoMoneda, String precioProducto,
+                                   String productosPorPersona, String porcentajeOfertaProducto, String estadoProducto, String publicacion, String usuid) {
         //String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
 
         String LOGIN_REQUEST_URL = "http://192.168.1.8/urumarkets/public/api/altaproductowbs";
@@ -108,7 +112,7 @@ public class AltaProducto extends Fragment {
         try{
             jsonObject.put("nombreProducto", nombreProducto);
             jsonObject.put("descripcionProducto", descripcionProducto);
-            jsonObject.put("stock", stock);
+            jsonObject.put("stockProducto", stock);
             jsonObject.put("checkboxOferta", checkboxOferta);
             jsonObject.put("checkboxTienePrecio", checkboxTienePrecio);
             jsonObject.put("tipoMoneda", tipoMoneda);
@@ -117,6 +121,7 @@ public class AltaProducto extends Fragment {
             jsonObject.put("porcentajeOfertaProducto", porcentajeOfertaProducto);
             jsonObject.put("estadoProducto", estadoProducto);
             jsonObject.put("publicacion", publicacion);
+            jsonObject.put("usuario_id", usuid);
         } catch (JSONException e){
             e.printStackTrace();
         }
@@ -190,48 +195,94 @@ public class AltaProducto extends Fragment {
         //jsonObject.put("porcentajeOfertaProducto", porcentajeOfertaProducto);     ----
         //jsonObject.put("estadoProducto", estadoProducto);
         //jsonObject.put("publicacion", publicacion);
-        altaP = (Button)view.findViewById(R.id.altaP) ;
+        altaP = view.findViewById(R.id.altaP);
 
         altaP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextInputEditText servicio = view.findViewById(R.id.switch3);
-                TextInputEditText nombreart2 = view.findViewById(R.id.nombreart2);
-                TextInputEditText descripcion2 = view.findViewById(R.id.descripcion2);
-                TextInputEditText tieneprecio = view.findViewById(R.id.switch1);
-                TextInputEditText moneda = view.findViewById(R.id.planets_spinner);
-                TextInputEditText precio2 = view.findViewById(R.id.precio2);
-                TextInputEditText stock2 = view.findViewById(R.id.stock2);
-                TextInputEditText limistexpersona2 = view.findViewById(R.id.limistexpersona2);
-                TextInputEditText estaenoferta = view.findViewById(R.id.switch2);
-                TextInputEditText oferta2 = view.findViewById(R.id.oferta2);
-                TextInputEditText estado = view.findViewById(R.id.planets_spinner2);
 
-
-                String serviciotext = servicio.getText().toString();
-                String nombrearticulo = nombreart2.getText().toString();
-                String descripciontext = descripcion2.getText().toString();
-                String tienepreciotext = tieneprecio.getText().toString();
-                String monedatext = moneda.getText().toString();
-                String preciotext = precio2.getText().toString();
-                String stock = stock2.getText().toString();
-                String limistexpersona = limistexpersona2.getText().toString();
-                String estaenofertatext = estaenoferta.getText().toString();
-                String oferta = oferta2.getText().toString();
-                String estadotext = estado.getText().toString();
-
-                autenticarUsuario(nombrearticulo,descripciontext,stock,estaenofertatext, tienepreciotext,monedatext, preciotext,
-                        limistexpersona, oferta, estadotext, serviciotext);
             }
         });
+        btnRegistrarse= view.findViewById(R.id.altaP);
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentConteiner,CV.getFGRegistroUsuario());
-                transaction.commit();
+                Switch servicio = (Switch) view.findViewById(R.id.switch3);
+                TextInputEditText nombreart2 = view.findViewById(R.id.nombreart2);
+                TextInputEditText descripcion2 = view.findViewById(R.id.descripcion2);
+                Switch tieneprecio = (Switch) view.findViewById(R.id.switch1);
+                Spinner moneda = (Spinner) view.findViewById(R.id.planets_spinner);
+                TextInputEditText precio2 = view.findViewById(R.id.precio2);
+                TextInputEditText stock2 = view.findViewById(R.id.stock2);
+                TextInputEditText limistexpersona2 = view.findViewById(R.id.limistexpersona2);
+                Switch estaenoferta = (Switch) view.findViewById(R.id.switch2);
+                TextInputEditText oferta2 = view.findViewById(R.id.oferta2);
+                Spinner estado = (Spinner) view.findViewById(R.id.planets_spinner2);
+
+                //Switch callSwitch = v.findViewById(R.id.signalCallSwitch);
+                String publicacion;
+                if (servicio != null && servicio.isChecked()) {
+                    publicacion = "servicio";
+                } else {
+                    publicacion = "productito";
+                }
+
+                String tienepreciotext;
+                String preciotext = precio2.getText().toString();
+                if (tieneprecio != null && tieneprecio.isChecked()) {
+                    tienepreciotext = "on";
+                } else {
+                    tienepreciotext = "off";
+                    preciotext = "0";
+                }
+
+                String estaenofertatext;
+                String oferta = oferta2.getText().toString();
+                if (estaenoferta != null && estaenoferta.isChecked()) {
+                    estaenofertatext = "on";
+                } else {
+                    estaenofertatext = "off";
+                    oferta = "0";
+                }
+
+                String monedatext = moneda.getSelectedItem().toString();
+                String estadotext = estado.getSelectedItem().toString();
+
+                String nombrearticulo = nombreart2.getText().toString();
+                String descripciontext = descripcion2.getText().toString();
+
+
+                String stock = stock2.getText().toString();
+                String limistexpersona = limistexpersona2.getText().toString();
+
+
+                if(nombrearticulo=="" || nombrearticulo.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe ingresar un nombre para la publicacion.", 3000);
+                    alert.show();
+                }else if(descripciontext=="" || descripciontext.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe ingresar la descripcion.", 3000);
+                    alert.show();
+                }else if(preciotext=="" || preciotext.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe el precio.", 3000);
+                    alert.show();
+                }else if(stock=="" || stock.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe ingresar el stock disponible.", 3000);
+                    alert.show();
+                }else if(limistexpersona=="" || limistexpersona.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe ingresar el minimo por persona.", 3000);
+                    alert.show();
+                }else if(oferta=="" || oferta.isEmpty()){
+                    Snackbar alert = Snackbar.make(view, "Debe ingresar el porcentaje de la oferta.", 3000);
+                    alert.show();
+                }else{
+                    AltaProducto(nombrearticulo,descripciontext,stock,estaenofertatext, tienepreciotext,monedatext, preciotext,
+                            limistexpersona, oferta, estadotext, publicacion,"1");
+
+                    Snackbar mySnackbar = Snackbar.make(view, "Articulo creado.", 3000);
+                    mySnackbar.show();
+                }
             }
         });
     }

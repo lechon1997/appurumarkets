@@ -1,5 +1,6 @@
 package com.example.myapplication98.Controladores;
 
+import com.example.myapplication98.Fragmentos.AltaProducto;
 import com.example.myapplication98.Fragmentos.fragmentBuscador;
 import com.example.myapplication98.Fragmentos.fragmentCarrito;
 import com.example.myapplication98.Fragmentos.fragmentCuenta;
@@ -131,5 +132,8 @@ public class ControladorVista{
         return new fragment_edit_inf_usu();
     }
 
+    public AltaProducto AltaP(){
+        return new AltaProducto();
+    }
 
 }

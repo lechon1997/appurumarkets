@@ -27,6 +27,7 @@ import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -148,7 +149,7 @@ public class fragmentRegistroEmpresa extends Fragment implements Response.Listen
     }
 
     private void altaEmpresa(Usuario u, String rut, String rs, String fantasia, String org, String rubro, String telEmp, String dir, String desc) {
-        String LOGIN_REQUEST_URL = "http://192.168.1.11/urumarkets/public/api/altaempws";
+        String LOGIN_REQUEST_URL = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/altaempws";
 
         // JSON data
         JSONObject jsonObject = new JSONObject();

@@ -53,11 +53,10 @@
                 app:boxCornerRadiusBottomStart="@dimen/circle_radius"
                 app:boxCornerRadiusTopEnd="@dimen/circle_radius"
                 app:boxCornerRadiusTopStart="@dimen/circle_radius"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_baseline_error_24"
-                app:helperTextEnabled="true"
                 app:helperTextTextColor="#D50000">
+
                 <Switch
                     android:id="@+id/switch3"
                     android:layout_width="232dp"
@@ -141,17 +140,16 @@
                 app:boxCornerRadiusBottomStart="@dimen/circle_radius"
                 app:boxCornerRadiusTopEnd="@dimen/circle_radius"
                 app:boxCornerRadiusTopStart="@dimen/circle_radius"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_baseline_error_24"
-                app:helperTextEnabled="true"
                 app:helperTextTextColor="#D50000">
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="232dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="El articulo tendra precio?" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="232dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="El articulo tendra precio?" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -162,21 +160,20 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="40dp"
+                android:hint="@string/moneda"
                 app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
                 app:boxCornerRadiusBottomStart="@dimen/circle_radius"
                 app:boxCornerRadiusTopEnd="@dimen/circle_radius"
                 app:boxCornerRadiusTopStart="@dimen/circle_radius"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_baseline_error_24"
-                app:helperTextEnabled="true"
-                android:hint="@string/moneda"
                 app:helperTextTextColor="#D50000">
+
                 <Spinner
                     android:id="@+id/planets_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/moneda"/>
+                    android:entries="@array/moneda" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -208,7 +205,9 @@
                     android:maxLines="1"
                     android:paddingStart="22dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/stock"
@@ -231,9 +230,11 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
                     android:paddingStart="22dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -275,11 +276,10 @@
                 app:boxCornerRadiusBottomStart="@dimen/circle_radius"
                 app:boxCornerRadiusTopEnd="@dimen/circle_radius"
                 app:boxCornerRadiusTopStart="@dimen/circle_radius"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_baseline_error_24"
-                app:helperTextEnabled="true"
                 app:helperTextTextColor="#D50000">
+
                 <Switch
                     android:id="@+id/switch2"
                     android:layout_width="232dp"
@@ -327,21 +327,20 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="40dp"
+                android:hint="@string/moneda"
                 app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
                 app:boxCornerRadiusBottomStart="@dimen/circle_radius"
                 app:boxCornerRadiusTopEnd="@dimen/circle_radius"
                 app:boxCornerRadiusTopStart="@dimen/circle_radius"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_baseline_error_24"
-                app:helperTextEnabled="true"
-                android:hint="@string/moneda"
                 app:helperTextTextColor="#D50000">
+
                 <Spinner
                     android:id="@+id/planets_spinner2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/estadoarticulo"/>
+                    android:entries="@array/estadoarticulo" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton

@@ -59,7 +59,18 @@
 
         </FrameLayout>
 
-
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/CrearProducto"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_expand2_more_24"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="28dp"
+            android:text="@string/CrearProducto"
+            android:textStyle="bold"
+            app:cornerRadius="0dp" />
 
     </LinearLayout>
 
@@ -84,7 +95,9 @@
             android:textStyle="bold"
             app:cornerRadius="0dp" />
 
+
     </LinearLayout>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

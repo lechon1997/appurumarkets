@@ -32,6 +32,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
@@ -142,10 +143,9 @@ public class fragmentLogin extends Fragment {
     }
 
     private void autenticarUsuario(String usu, String pass) {
-        //String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
 
-        String LOGIN_REQUEST_URL = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
-        //altaproductowbs
+        String LOGIN_REQUEST_URL = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/autenticarUsuario";
+
         // JSON data
         JSONObject jsonObject = new JSONObject();
         try{
@@ -191,6 +191,7 @@ public class fragmentLogin extends Fragment {
                                 usuario.setDepartamento(departamento);
                                 usuario.setLocalidad(localidad);
                                 CU.setUsuario(usuario);
+                                CU.setSession();
 
                                 if(cbRecuerdame.isChecked()){
                                     SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -209,7 +210,7 @@ public class fragmentLogin extends Fragment {
                                 transaction.commit();
 
                             }else if (jo.optString("estado").equals("incorrecto"))
-                                Toast.makeText(getContext(),"incorrecto",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"Usuario incorrecto",Toast.LENGTH_SHORT).show();
                             else
                                 Toast.makeText(getContext(),"shrek",Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {

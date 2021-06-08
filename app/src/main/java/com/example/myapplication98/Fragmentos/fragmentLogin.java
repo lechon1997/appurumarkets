@@ -38,6 +38,7 @@ import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
 import com.example.myapplication98.Modelo.Localidad;
 import com.example.myapplication98.Modelo.Usuario;
+import com.example.myapplication98.Modelo.vendedor;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -167,47 +168,99 @@ public class fragmentLogin extends Fragment {
                         try {
                             JSONObject jo = response.getJSONObject("respuesta");
                             if(jo.optString("estado").equals("ok")){
+                                if(jo.optString("tipoUsu").equals("vendedor")){
+                                    vendedor usuario = new vendedor(jo.optInt("id"));
+                                    Departamento departamento = new Departamento();
+                                    Localidad localidad = new Localidad();
 
-                                Usuario usuario = new Usuario();
-                                Departamento departamento = new Departamento();
-                                Localidad localidad = new Localidad();
+                                    usuario.setTipoUsuario(jo.optString("tipoUsu"));
+                                    usuario.setPrimer_nombre(jo.optString("pnombre"));
+                                    usuario.setSegundo_nombre(jo.optString("snombre"));
+                                    usuario.setPrimer_apellido(jo.optString("papellido"));
+                                    usuario.setSegundo_apellido(jo.optString("sapellido"));
+                                    usuario.setCedula(jo.optString("cedula"));
+                                    usuario.setTelefono(jo.getString("telefono"));
+                                    usuario.setEmail(jo.getString("email"));
 
-                                usuario.setId(jo.optInt("id"));
-                                usuario.setTipoUsuario(jo.optString("tipoUsu"));
-                                usuario.setPrimer_nombre(jo.optString("pnombre"));
-                                usuario.setSegundo_nombre(jo.optString("snombre"));
-                                usuario.setPrimer_apellido(jo.optString("papellido"));
-                                usuario.setSegundo_apellido(jo.optString("sapellido"));
-                                usuario.setCedula(jo.optString("cedula"));
-                                usuario.setTelefono(jo.getString("telefono"));
-                                usuario.setEmail(jo.getString("email"));
+                                    departamento.setId(jo.optInt("idDepartamento"));
+                                    departamento.setNombre(jo.optString("nomDepartamento"));
 
-                                departamento.setId(jo.optInt("idDepartamento"));
-                                departamento.setNombre(jo.optString("nomDepartamento"));
+                                    localidad.setId(jo.optInt("idLocalidad"));
+                                    localidad.setNombre(jo.optString("nomLocalidad"));
 
-                                localidad.setId(jo.optInt("idLocalidad"));
-                                localidad.setNombre(jo.optString("nomLocalidad"));
+                                    usuario.setDepartamento(departamento);
+                                    usuario.setLocalidad(localidad);
 
-                                usuario.setDepartamento(departamento);
-                                usuario.setLocalidad(localidad);
-                                CU.setUsuario(usuario);
-                                CU.setSession();
+                                    usuario.setRUT(jo.optInt("RUT"));
+                                    usuario.setRazonSocial(jo.optString("razonSocial"));
+                                    usuario.setNombreFantasia(jo.optString("nombreFantasia"));
+                                    usuario.setTipoOrganizacion(jo.optString("tipoOrganizacion"));
+                                    usuario.setRubro(jo.optString("rubro"));
+                                    usuario.setTelefonoEmpresa(jo.optInt("telefonoEmpresa"));
+                                    usuario.setDireccion(jo.optString("direccion"));
+                                    usuario.setDescripcion(jo.optString("descripcion"));
 
-                                if(cbRecuerdame.isChecked()){
-                                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPref.edit();
-                                    Gson gson = new Gson();
-                                    String jsonUsuario = gson.toJson(usuario);
-                                    editor.putString(jo.getString("email"),jsonUsuario);
-                                    editor.putString("usuarioRecordado",jo.getString("email"));
-                                    editor.putBoolean("recordado",true);
-                                    editor.commit();
+                                    CU.setUsuario(usuario);
+                                    CU.setEmpresa(usuario);
+                                    CU.setSession();
+
+                                    if(cbRecuerdame.isChecked()){
+                                        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPref.edit();
+                                        Gson gson = new Gson();
+                                        String jsonUsuario = gson.toJson(usuario);
+                                        editor.putString(jo.getString("email"),jsonUsuario);
+                                        editor.putString("usuarioRecordado",jo.getString("email"));
+                                        editor.putBoolean("recordado",true);
+                                        editor.commit();
+                                    }
+
+
+                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.fragmentConteiner,CV.getFGInicio());
+                                    transaction.commit();
+                                }else{
+                                    Usuario usuario = new Usuario();
+                                    Departamento departamento = new Departamento();
+                                    Localidad localidad = new Localidad();
+
+                                    usuario.setId(jo.optInt("id"));
+                                    usuario.setTipoUsuario(jo.optString("tipoUsu"));
+                                    usuario.setPrimer_nombre(jo.optString("pnombre"));
+                                    usuario.setSegundo_nombre(jo.optString("snombre"));
+                                    usuario.setPrimer_apellido(jo.optString("papellido"));
+                                    usuario.setSegundo_apellido(jo.optString("sapellido"));
+                                    usuario.setCedula(jo.optString("cedula"));
+                                    usuario.setTelefono(jo.getString("telefono"));
+                                    usuario.setEmail(jo.getString("email"));
+
+                                    departamento.setId(jo.optInt("idDepartamento"));
+                                    departamento.setNombre(jo.optString("nomDepartamento"));
+
+                                    localidad.setId(jo.optInt("idLocalidad"));
+                                    localidad.setNombre(jo.optString("nomLocalidad"));
+
+                                    usuario.setDepartamento(departamento);
+                                    usuario.setLocalidad(localidad);
+                                    CU.setUsuario(usuario);
+                                    CU.setSession();
+
+                                    if(cbRecuerdame.isChecked()){
+                                        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPref.edit();
+                                        Gson gson = new Gson();
+                                        String jsonUsuario = gson.toJson(usuario);
+                                        editor.putString(jo.getString("email"),jsonUsuario);
+                                        editor.putString("usuarioRecordado",jo.getString("email"));
+                                        editor.putBoolean("recordado",true);
+                                        editor.commit();
+                                    }
+
+
+                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.fragmentConteiner,CV.getFGInicio());
+                                    transaction.commit();
                                 }
-
-
-                                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragmentConteiner,CV.getFGInicio());
-                                transaction.commit();
 
                             }else if (jo.optString("estado").equals("incorrecto"))
                                 Toast.makeText(getContext(),"Usuario incorrecto",Toast.LENGTH_SHORT).show();

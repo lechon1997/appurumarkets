@@ -113,7 +113,7 @@ public class fragmentLogeado extends Fragment {
         });
 
         Usuario u = CU.getUsuario();
-        if(u.getTipoUsuario().equals("cliente")){
+        if(u!=null && u.getTipoUsuario().equals("cliente")){
             btnDatosV.setVisibility(View.INVISIBLE);
             btnDatosV.setHeight(0);
         }

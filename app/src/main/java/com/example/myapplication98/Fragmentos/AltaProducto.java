@@ -184,17 +184,6 @@ public class AltaProducto extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //jsonObject.put("nombreProducto", nombreProducto);     ---
-        //jsonObject.put("descripcionProducto", descripcionProducto);   ---
-        //jsonObject.put("oferta", oferta);     ----
-        //jsonObject.put("checkboxOferta", checkboxOferta);         ---
-        //jsonObject.put("checkboxTienePrecio", checkboxTienePrecio);       ---
-        //jsonObject.put("tipoMoneda", tipoMoneda);                 ---
-        //jsonObject.put("precioProducto", precioProducto);         ---
-        //jsonObject.put("productosPorPersona", productosPorPersona);           ---
-        //jsonObject.put("porcentajeOfertaProducto", porcentajeOfertaProducto);     ----
-        //jsonObject.put("estadoProducto", estadoProducto);
-        //jsonObject.put("publicacion", publicacion);
         altaP = view.findViewById(R.id.altaP);
 
         altaP.setOnClickListener(new View.OnClickListener() {

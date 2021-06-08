@@ -2,12 +2,21 @@ package com.example.myapplication98.Fragmentos;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.myapplication98.Controladores.ControladorUsuario;
+import com.example.myapplication98.Controladores.ControladorVista;
+import com.example.myapplication98.Modelo.Usuario;
+import com.example.myapplication98.Modelo.vendedor;
 import com.example.myapplication98.R;
 
 /**
@@ -16,6 +25,10 @@ import com.example.myapplication98.R;
  * create an instance of this fragment.
  */
 public class fragmentDatosEmpresa extends Fragment {
+
+    private ControladorUsuario CU = ControladorUsuario.getInstance();
+    private ControladorVista CV = ControladorVista.getInstance();
+    private View myView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +73,43 @@ public class fragmentDatosEmpresa extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_datos_empresa, container, false);
+        myView =  inflater.inflate(R.layout.fragment_datos_empresa, container, false);
+        return myView;
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        vendedor usuario = CU.getEmpresa();
+
+        TextView tvRut = myView.findViewById(R.id.tvSetRut);
+        TextView tvRazonSocial = myView.findViewById(R.id.tvSetRazonSocial);
+        TextView tvFantasia = myView.findViewById(R.id.tvSetFantasia);
+        TextView tvTipoOrg = myView.findViewById(R.id.tvSetTipoOrg);
+        TextView tvRubro = myView.findViewById(R.id.tvSetRubro);
+        TextView tvTelEmpresa = myView.findViewById(R.id.tvSetTelEmpresa);
+        TextView tvDireccion = myView.findViewById(R.id.tvSetDireccion);
+        TextView tvDescripcion = myView.findViewById(R.id.tvSetDescripcion);
+
+
+        tvRut.setText(String.valueOf(usuario.getRUT()));
+        tvRazonSocial.setText(usuario.getRazonSocial());
+        tvFantasia.setText(usuario.getNombreFantasia());
+        tvTipoOrg.setText(usuario.getTipoOrganizacion());
+        tvRubro.setText(usuario.getRubro());
+        tvTelEmpresa.setText(String.valueOf(usuario.getTelefonoEmpresa()));
+        tvDireccion.setText(usuario.getDireccion());
+        tvDescripcion.setText(usuario.getDescripcion());
+
+        Button btnEdit = myView.findViewById(R.id.btnEditarDatos);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                //transaction.replace(R.id.fragmentConteiner,CV.getFGEditarDatosUsu());
+                //transaction.commit();
+            }
+        });
     }
 }

@@ -36,6 +36,8 @@
     <string name="nombreart">Nombre del articulo</string>
     <string name="moneda">Moneda</string>
     <string name="porsentaje">Porcentaje</string>
+    <string name="dscImagen">imagen del producto</string>
+
 
     <string-array name="arraytipoorg">
         <item>ONG</item>

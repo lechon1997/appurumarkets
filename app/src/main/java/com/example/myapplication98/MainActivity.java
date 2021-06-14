@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.SegundoFragmento:
-                    loadFragment(CV.getFGPrueba());
+                    loadFragment(CV.getFGCarrito());
                     break;
                 case R.id.TercerFragmento:
                     loadFragment(CV.getFGInicio());

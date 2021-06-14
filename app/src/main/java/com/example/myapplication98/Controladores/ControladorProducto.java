@@ -8,7 +8,7 @@ public class ControladorProducto {
     private static ControladorProducto Instance = null;
     private Publicacion p;
 
-    public static ControladorProducto getInstance() {
+    public static ControladorProducto getInstance(){
         if (Instance == null)
             Instance = new ControladorProducto();
         return Instance;

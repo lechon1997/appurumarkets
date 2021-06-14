@@ -101,4 +101,6 @@ public class vendedor extends Usuario{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    
 }

@@ -7,7 +7,7 @@ public class ControladorUsuario {
     private static ControladorUsuario Instance = null;
 
     private Usuario usuario;
-    private Usuario usuarioEnMemoria; // reemplazar con bundle
+    private Usuario usuarioEnMemoria;
     private vendedor Empresa;
 
     public vendedor getEmpresa() {
@@ -26,6 +26,7 @@ public class ControladorUsuario {
 
     public void setCerrarSession(){
         SesionIniciada = false;
+        usuario = null;
     }
 
     public boolean getSession(){

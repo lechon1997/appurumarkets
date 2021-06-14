@@ -36,6 +36,7 @@ import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Departamento;
+import com.example.myapplication98.Modelo.ItemCarrito;
 import com.example.myapplication98.Modelo.Localidad;
 import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.Modelo.vendedor;
@@ -50,6 +51,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -208,6 +210,7 @@ public class fragmentLogin extends Fragment {
                                         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         Gson gson = new Gson();
+
                                         String jsonUsuario = gson.toJson(usuario);
                                         editor.putString(jo.getString("email"),jsonUsuario);
                                         editor.putString("usuarioRecordado",jo.getString("email"));

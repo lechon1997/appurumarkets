@@ -1,5 +1,9 @@
 package com.example.myapplication98.Modelo;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class Usuario {
     private int id;
     private String tipoUsuario;
@@ -17,6 +21,7 @@ public class Usuario {
     private Localidad localidad;
 
     public Usuario() {
+        //carrito = new ArrayList<>();
     }
 
     public Usuario(String primer_nombre, String primer_apellido, String email, String cedula, String telefono, Departamento departamento, Localidad localidad,String pass) {
@@ -28,7 +33,10 @@ public class Usuario {
         this.departamento = departamento;
         this.localidad = localidad;
         this.password = pass;
+    //    carrito = new ArrayList<>();
     }
+
+
 
     public String getTipoUsuario() {
         return tipoUsuario;

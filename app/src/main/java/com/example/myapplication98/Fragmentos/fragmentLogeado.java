@@ -180,6 +180,7 @@ public class fragmentLogeado extends Fragment {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("recordado",false);
                 editor.commit();
+                CU.setCerrarSession();
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentConteiner,CV.getFGLogin());

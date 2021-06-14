@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.Usuario;
+import com.example.myapplication98.Modelo.vendedor;
 import com.example.myapplication98.R;
 import com.google.gson.Gson;
 
@@ -84,26 +85,48 @@ public class fragmentDatosCliente extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if(CU.getUsuario()!=null){
+            Usuario usuario = CU.getUsuario();
 
-        Usuario usuario = CU.getUsuario();
+            //SETEO DE DE LA INFORMACIÓN DEL USUARIO
 
-        //SETEO DE DE LA INFORMACIÓN DEL USUARIO
+            TextView tvNombre = myView.findViewById(R.id.tvSetNombre);
+            TextView tvApellido = myView.findViewById(R.id.tvSetApellido);
+            TextView tvCedula = myView.findViewById(R.id.tvSetCedula);
+            TextView tvTelefono = myView.findViewById(R.id.tvSetTelefono);
+            TextView tvEmail = myView.findViewById(R.id.tvSetEmail);
+            TextView tvDepartamento = myView.findViewById(R.id.tvSetDepartamento);
+            TextView tvLocalidad = myView.findViewById(R.id.tvSetLocalidad);
 
-        TextView tvNombre = myView.findViewById(R.id.tvSetNombre);
-        TextView tvApellido = myView.findViewById(R.id.tvSetApellido);
-        TextView tvCedula = myView.findViewById(R.id.tvSetCedula);
-        TextView tvTelefono = myView.findViewById(R.id.tvSetTelefono);
-        TextView tvEmail = myView.findViewById(R.id.tvSetEmail);
-        TextView tvDepartamento = myView.findViewById(R.id.tvSetDepartamento);
-        TextView tvLocalidad = myView.findViewById(R.id.tvSetLocalidad);
+            tvNombre.setText(usuario.getPrimer_nombre());
+            tvApellido.setText(usuario.getPrimer_apellido());
+            tvCedula.setText(usuario.getCedula());
+            tvTelefono.setText(usuario.getTelefono());
+            tvEmail.setText(usuario.getEmail());
+            tvDepartamento.setText(usuario.getDepartamento().getNombre());
+            tvLocalidad.setText(usuario.getLocalidad().getNombre());
+        }else{
+            vendedor usuario = CU.getEmpresa();
 
-        tvNombre.setText(usuario.getPrimer_nombre());
-        tvApellido.setText(usuario.getPrimer_apellido());
-        tvCedula.setText(usuario.getCedula());
-        tvTelefono.setText(usuario.getTelefono());
-        tvEmail.setText(usuario.getEmail());
-        tvDepartamento.setText(usuario.getDepartamento().getNombre());
-        tvLocalidad.setText(usuario.getLocalidad().getNombre());
+            //SETEO DE DE LA INFORMACIÓN DEL USUARIO
+
+            TextView tvNombre = myView.findViewById(R.id.tvSetNombre);
+            TextView tvApellido = myView.findViewById(R.id.tvSetApellido);
+            TextView tvCedula = myView.findViewById(R.id.tvSetCedula);
+            TextView tvTelefono = myView.findViewById(R.id.tvSetTelefono);
+            TextView tvEmail = myView.findViewById(R.id.tvSetEmail);
+            TextView tvDepartamento = myView.findViewById(R.id.tvSetDepartamento);
+            TextView tvLocalidad = myView.findViewById(R.id.tvSetLocalidad);
+
+            tvNombre.setText(usuario.getPrimer_nombre());
+            tvApellido.setText(usuario.getPrimer_apellido());
+            tvCedula.setText(usuario.getCedula());
+            tvTelefono.setText(usuario.getTelefono());
+            tvEmail.setText(usuario.getEmail());
+            tvDepartamento.setText(usuario.getDepartamento().getNombre());
+            tvLocalidad.setText(usuario.getLocalidad().getNombre());
+        }
+
 
         Button btnEdit = myView.findViewById(R.id.btnEditarDatos);
         btnEdit.setOnClickListener(new View.OnClickListener() {

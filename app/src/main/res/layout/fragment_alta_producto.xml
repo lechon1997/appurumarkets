@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragmentos.AltaProducto">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+    <androidx.core.widget.NestedScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E53935"
+        android:orientation="vertical"
+        tools:context=".Fragmentos.fragment_edit_inf_usu">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/background_login"
+            android:orientation="vertical"
+            android:paddingBottom="80dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/open_sans"
+                android:gravity="center_horizontal"
+                android:text="@string/AltaProducto"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="#212121"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/prodOserv"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextTextColor="#D50000">
+
+                <Switch
+                    android:id="@+id/switch3"
+                    android:layout_width="232dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Servicio" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nombreart"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/nombreart"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#D50000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nombreart2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descripcion"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/descripcion"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#D50000">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descripcion2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tendraprecio"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextTextColor="#D50000">
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="232dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="El articulo tendra precio?" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/moneda"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/moneda"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextTextColor="#D50000">
+
+                <Spinner
+                    android:id="@+id/planets_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/moneda" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/precio"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/precio"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#171716">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/precio2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/stock"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/stock"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/stock2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/limitexpersona"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/limitexpersona"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/limistexpersona2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/estaenoferta"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextTextColor="#D50000">
+
+                <Switch
+                    android:id="@+id/switch2"
+                    android:layout_width="232dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Esta en oferta?" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/oferta"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:hint="@string/porsentaje"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="#171716">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/oferta2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="22dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/estado"
+                style="@style/shrek2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:hint="@string/moneda"
+                app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+                app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+                app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+                app:boxCornerRadiusTopStart="@dimen/circle_radius"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/ic_baseline_error_24"
+                app:helperTextTextColor="#D50000">
+
+                <Spinner
+                    android:id="@+id/planets_spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/estadoarticulo" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/altaP"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:minHeight="55dp"
+                android:text="@string/CrearProducto"
+                android:textStyle="bold"
+                app:cornerRadius="16dp">
+
+            </com.google.android.material.button.MaterialButton>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

@@ -27,13 +27,34 @@
     <string name="ModificarDatosEmpresa">Modificar Datos Empresa</string>
     <string name="editar_informaci_n">EDITAR DATOS</string>
     <string name="confirmar">Confirmar</string>
+    <string name="AltaProducto">Alta Producto</string>
+    <string name="Nombreart">Nombre Articulo</string>
+    <string name="precio">Precio</string>
+    <string name="stock">Stock</string>
+    <string name="limitexpersona">Limite por persona</string>
+    <string name="CrearProducto">Crear Producto</string>
+    <string name="nombreart">Nombre del articulo</string>
+    <string name="moneda">Moneda</string>
+    <string name="porsentaje">Porcentaje</string>
     <string name="dscImagen">imagen del producto</string>
+
 
     <string-array name="arraytipoorg">
         <item>ONG</item>
         <item>TipoORG2</item>
         <item>TipoORG3</item>
         <item>TipoORG4</item>
+    </string-array>
+
+    <string-array name="moneda">
+        <item>USD</item>
+        <item>$</item>
+    </string-array>
+
+    <string-array name="estadoarticulo">
+        <item>Activo</item>
+        <item>Pendiente</item>
+        <item>Inactivo</item>
     </string-array>
 
 </resources>

@@ -1,12 +1,23 @@
 package com.example.myapplication98.Controladores;
 
 import com.example.myapplication98.Modelo.Usuario;
+import com.example.myapplication98.Modelo.vendedor;
 
 public class ControladorUsuario {
     private static ControladorUsuario Instance = null;
 
     private Usuario usuario;
     private Usuario usuarioEnMemoria; // reemplazar con bundle
+    private vendedor Empresa;
+
+    public vendedor getEmpresa() {
+        return Empresa;
+    }
+
+    public void setEmpresa(vendedor empresa) {
+        Empresa = empresa;
+    }
+
     private boolean SesionIniciada;
 
     public  void setSession(){

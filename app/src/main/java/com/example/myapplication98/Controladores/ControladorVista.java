@@ -54,9 +54,8 @@ public class ControladorVista{
     }
 
     public fragmentCarrito getFGCarrito() {
-        if(FGCarrito == null)
-            FGCarrito = new fragmentCarrito();
-        return FGCarrito;
+           return new fragmentCarrito();
+
     }
 
     public void clearFGCarrito(){

@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication98.Config;
 import com.example.myapplication98.Modelo.ItemCarrito;
 import com.example.myapplication98.Modelo.Publicacion;
 import com.example.myapplication98.R;
@@ -33,12 +35,30 @@ public class AdapterCarrito extends RecyclerView.Adapter<AdapterCarrito.CarritoH
     @Override
     public AdapterCarrito.CarritoHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item_carrito,parent,false);
-        return new AdapterCarrito.CarritoHolder(view);
+        return new CarritoHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterCarrito.CarritoHolder holder, int position) {
+        String titulo = carritoNazi.get(position).getP().getTitulo();
+        int precio = carritoNazi.get(position).getP().getPrecio();
+        double descuento = carritoNazi.get(position).getP().getDescuento();
 
+        int cantidad = carritoNazi.get(position).getCantidad();
+        String imagenP = carritoNazi.get(position).getP().getFoto();
+        if(descuento != 0 && !Double.isNaN(descuento)){
+            holder.tv2.setText("$"+String.valueOf(Math.round(precio-((precio*descuento)/100))));
+            holder.tv4.setText("$"+ String.valueOf(cantidad * Math.round(precio-((precio*descuento)/100))));
+        }else if(precio != 0){
+            holder.tv2.setText("$"+String.valueOf(precio));
+            holder.tv4.setText("$"+ String.valueOf(cantidad * precio));
+        }
+
+        String url ="http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/storage/productos/"+imagenP;
+        Glide.with(inflater.getContext()).load(url).into(holder.img);
+
+        holder.tv1.setText(titulo);
+        holder.tv3.setText(String.valueOf(cantidad));
     }
 
     @Override
@@ -54,6 +74,7 @@ public class AdapterCarrito extends RecyclerView.Adapter<AdapterCarrito.CarritoH
             tv1 = itemView.findViewById(R.id.carritoTitulo);
             tv2 = itemView.findViewById(R.id.precioCarrito);
             tv3 = itemView.findViewById(R.id.cantidadCarrito);
+            tv4 = itemView.findViewById(R.id.totalCarrito);
             img = itemView.findViewById(R.id.imgCarrito);
         }
     }

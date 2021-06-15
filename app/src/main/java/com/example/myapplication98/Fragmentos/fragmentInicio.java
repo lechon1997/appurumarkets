@@ -116,15 +116,13 @@ public class fragmentInicio extends Fragment {
     }
 
 
-
-
-
     private void MostrarLista() {
         recyclerViewPublicacion.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterPublicacion = new AdapterPublicacion(getContext(),ListaPublicaciones,this);
+        adapterPublicacion = new AdapterPublicacion(getContext(), ListaPublicaciones, this);
         recyclerViewPublicacion.setAdapter(adapterPublicacion);
 
     }
+
 
     private void getPublicaciones() {
 

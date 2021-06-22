@@ -1,23 +1,33 @@
 package com.example.myapplication98.Fragmentos;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication98.Config;
 import com.example.myapplication98.Controladores.ControladorProducto;
+import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
+import com.example.myapplication98.Modelo.ItemCarrito;
 import com.example.myapplication98.Modelo.Publicacion;
+import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,8 +39,9 @@ public class fragmentVerProducto extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    ControladorProducto CP = ControladorProducto.getInstance();
-    ControladorVista CV = ControladorVista.getInstance();
+    private ControladorProducto CP = ControladorProducto.getInstance();
+    private ControladorVista CV = ControladorVista.getInstance();
+    private ControladorUsuario CU = ControladorUsuario.getInstance();
     private View myView;
     private Publicacion p;
 
@@ -137,6 +148,44 @@ public class fragmentVerProducto extends Fragment {
                     cantNumero--;
                 }
                 tvCantidad.setText(String.valueOf(cantNumero));
+            }
+        });
+
+        Button btn = myView.findViewById(R.id.btnAgregarProd);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView tv = myView.findViewById(R.id.tvCant);
+                int cantidad = Integer.valueOf(tv.getText().toString());
+
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                boolean recordado = sharedPref.getBoolean("recordado",false);
+
+                if(recordado){
+                    String usuKey = sharedPref.getString("usuarioRecordado","asd");//key o email que identifica a usuario
+
+
+                    Usuario u = CU.getUsuario();
+                    ItemCarrito nit= new ItemCarrito(CP.getP(),cantidad);
+                    //u.agregarAlCarrito(nit);
+
+                    Gson gson = new Gson();
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    String jsonUsuario = gson.toJson(u);
+                    editor.putString(usuKey,jsonUsuario);
+                    editor.apply();
+
+                    Snackbar.make(myView,"Se agregó al carrito",Snackbar.LENGTH_SHORT).show();
+                }else if (CU.getSession()){
+                    Usuario u = CU.getUsuario();
+                    ItemCarrito nit= new ItemCarrito(CP.getP(),cantidad);
+                    //u.agregarAlCarrito(nit);
+                    Snackbar.make(myView,"Se agregó al carrito",Snackbar.LENGTH_SHORT).show();
+                }else{
+                    Snackbar.make(myView,"Debe iniciar sesión primero",Snackbar.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }

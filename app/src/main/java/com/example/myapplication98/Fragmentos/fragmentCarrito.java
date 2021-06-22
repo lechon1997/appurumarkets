@@ -68,14 +68,11 @@ public class fragmentCarrito extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_carrito, container, false);
-        TextView t = view.findViewById(R.id.randomnum);
-        t.setText(String.valueOf(contador));
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 }

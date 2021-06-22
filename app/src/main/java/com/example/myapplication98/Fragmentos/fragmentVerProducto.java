@@ -167,25 +167,23 @@ public class fragmentVerProducto extends Fragment {
 
                     Usuario u = CU.getUsuario();
                     ItemCarrito nit= new ItemCarrito(CP.getP(),cantidad);
-                    //u.agregarAlCarrito(nit);
+                    u.agregarAlCarrito(nit);
 
                     Gson gson = new Gson();
                     SharedPreferences.Editor editor = sharedPref.edit();
                     String jsonUsuario = gson.toJson(u);
                     editor.putString(usuKey,jsonUsuario);
-                    editor.apply();
+                    editor.commit();
 
                     Snackbar.make(myView,"Se agregó al carrito",Snackbar.LENGTH_SHORT).show();
                 }else if (CU.getSession()){
                     Usuario u = CU.getUsuario();
                     ItemCarrito nit= new ItemCarrito(CP.getP(),cantidad);
-                    //u.agregarAlCarrito(nit);
+                    u.agregarAlCarrito(nit);
                     Snackbar.make(myView,"Se agregó al carrito",Snackbar.LENGTH_SHORT).show();
                 }else{
                     Snackbar.make(myView,"Debe iniciar sesión primero",Snackbar.LENGTH_SHORT).show();
                 }
-
-
             }
         });
     }

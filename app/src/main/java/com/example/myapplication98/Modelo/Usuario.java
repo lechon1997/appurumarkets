@@ -19,9 +19,9 @@ public class Usuario {
     private String password;
     private Departamento departamento;
     private Localidad localidad;
-
+    private List<ItemCarrito> carrito;
     public Usuario() {
-        //carrito = new ArrayList<>();
+        carrito = new ArrayList<>();
     }
 
     public Usuario(String primer_nombre, String primer_apellido, String email, String cedula, String telefono, Departamento departamento, Localidad localidad,String pass) {
@@ -33,10 +33,39 @@ public class Usuario {
         this.departamento = departamento;
         this.localidad = localidad;
         this.password = pass;
-    //    carrito = new ArrayList<>();
+        carrito = new ArrayList<>();
     }
 
+    public List<ItemCarrito> getCarrito() {
+        return carrito;
+    }
 
+    public void setCarrito(List<ItemCarrito> carrito) {
+        this.carrito = carrito;
+    }
+
+    public void agregarAlCarrito(ItemCarrito item){
+        boolean encontrado = false;
+        if(carrito.size() == 0){
+            carrito.add(item);
+        }else{
+            Iterator it = carrito.iterator();
+            while (it.hasNext()){
+
+                ItemCarrito itemLista = (ItemCarrito)it.next();
+
+                if(itemLista.getP().getTitulo().equals(item.getP().getTitulo())){
+                    int sumaRancia = itemLista.getCantidad() + item.getCantidad();
+                    itemLista.setCantidad(sumaRancia);
+                    encontrado = true;
+                    break;
+                }
+            }
+            if(encontrado == false){
+                carrito.add(item);
+            }
+        }
+    }
 
     public String getTipoUsuario() {
         return tipoUsuario;

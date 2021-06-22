@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -77,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.SegundoFragmento:
-                    loadFragment(CV.getFGCarrito());
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragmentConteiner,CV.getFGCarrito()).addToBackStack("tag2xd");
+                    transaction.commit();
                     break;
                 case R.id.TercerFragmento:
                     loadFragment(CV.getFGInicio());

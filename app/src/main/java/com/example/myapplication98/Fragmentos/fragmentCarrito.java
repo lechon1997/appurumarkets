@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.myapplication98.Adaptadores.AdapterCarrito;
 import com.example.myapplication98.Adaptadores.AdapterPublicacion;
 import com.example.myapplication98.Controladores.ControladorUsuario;
+import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.ItemCarrito;
 import com.example.myapplication98.R;
 
@@ -35,6 +36,7 @@ public class fragmentCarrito extends Fragment {
     private ControladorUsuario CU = ControladorUsuario.getInstance();
     private static final String ARG_PARAM2 = "param2";
     private View myView;
+    private ControladorVista CV = ControladorVista.getInstance();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -83,6 +85,7 @@ public class fragmentCarrito extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        CV.getNavigation().setVisibility(View.GONE);
         RecyclerView rv = myView.findViewById(R.id.idCarrito);
 
         if(CU.getSession()){

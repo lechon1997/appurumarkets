@@ -34,6 +34,7 @@ import com.example.myapplication98.Modelo.Publicacion;
 import com.example.myapplication98.Modelo.Usuario;
 import com.example.myapplication98.R;
 import com.example.myapplication98.WebService.MySingleton;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -111,7 +112,8 @@ public class fragmentInicio extends Fragment {
         recyclerViewPublicacion = myView.findViewById(R.id.recycler_view);
         ListaPublicaciones = new ArrayList<>();
         getPublicaciones();
-
+        BottomNavigationView bnv = CV.getNavigation();
+        bnv.setSelectedItemId(R.id.TercerFragmento);
 
     }
 

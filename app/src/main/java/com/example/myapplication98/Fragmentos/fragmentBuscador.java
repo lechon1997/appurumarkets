@@ -24,6 +24,7 @@ public class fragmentBuscador extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ControladorVista CV = ControladorVista.getInstance();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,7 +68,7 @@ public class fragmentBuscador extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_buscador, container, false);
 
-        Button btn = view.findViewById(R.id.button);
+        /*Button btn = view.findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +84,7 @@ public class fragmentBuscador extends Fragment {
                 CV.clearFGCarrito();
                 a.onDestroy();
             }
-        });
+        });*/
         return view;
     }
 }

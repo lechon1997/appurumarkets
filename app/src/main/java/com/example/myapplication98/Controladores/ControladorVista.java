@@ -1,6 +1,9 @@
 package com.example.myapplication98.Controladores;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.myapplication98.Fragmentos.AltaProducto;
+import com.example.myapplication98.Fragmentos.edit_inf_emp;
 import com.example.myapplication98.Fragmentos.fragmentBuscador;
 import com.example.myapplication98.Fragmentos.fragmentCarrito;
 import com.example.myapplication98.Fragmentos.fragmentCuenta;
@@ -149,6 +152,10 @@ public class ControladorVista{
 
     public fragmentVerProducto getFGVerProducto(){
         return new fragmentVerProducto();
+    }
+
+    public Fragment getedit_inf_emp(){
+        return new edit_inf_emp();
     }
 
 }

@@ -1,7 +1,10 @@
 package com.example.myapplication98.Fragmentos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,11 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -45,6 +50,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link AltaProducto#newInstance} factory method to
@@ -68,6 +75,11 @@ public class AltaProducto extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private static final int GALLERY_REQUEST_CODE = 123;
+    ImageView imageView;
+    Button btnPick;
+    String imagen_uri;
 
     public AltaProducto() {
         // Required empty public constructor
@@ -102,10 +114,10 @@ public class AltaProducto extends Fragment {
     }
 
     private void AltaProducto(String nombreProducto, String descripcionProducto, String stock, String checkboxOferta, String checkboxTienePrecio, String tipoMoneda, String precioProducto,
-                                   String productosPorPersona, String porcentajeOfertaProducto, String estadoProducto, String publicacion, String usuid) {
+                                   String productosPorPersona, String porcentajeOfertaProducto, String estadoProducto, String publicacion, String usuid, String uri) {
         //String url = "http://192.168.1.11/urumarkets/public/api/autenticarUsuario";
 
-        String LOGIN_REQUEST_URL = "http://192.168.1.8/urumarkets/public/api/altaproductowbs";
+        String LOGIN_REQUEST_URL = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/altaproductowbs";
         //altaproductowbs
         // JSON data
         JSONObject jsonObject = new JSONObject();
@@ -122,6 +134,7 @@ public class AltaProducto extends Fragment {
             jsonObject.put("estadoProducto", estadoProducto);
             jsonObject.put("publicacion", publicacion);
             jsonObject.put("usuario_id", usuid);
+            //jsonObject.put("file", uri);
         } catch (JSONException e){
             e.printStackTrace();
         }
@@ -182,9 +195,50 @@ public class AltaProducto extends Fragment {
         return inflater.inflate(R.layout.fragment_alta_producto, container, false);
     }
 
+    /*public String getRealPathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }*/
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,@Nullable Intent data){
+        if(requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK && data != null){
+            Uri imageData = data.getData();
+
+            //imagen_uri = getRealPathFromURI(this.getContext(), imageData);
+
+            imagen_uri = imageData.getPath();
+            imageView.setImageURI(imageData);
+        }
+
+    }
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         altaP = view.findViewById(R.id.altaP);
+
+        imageView = view.findViewById(R.id.myImageView);
+        btnPick = view.findViewById(R.id.btnPickImage);
+        btnPick.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent.createChooser(intent,"elije tu foto"),GALLERY_REQUEST_CODE);
+            }
+        });
 
         altaP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +263,11 @@ public class AltaProducto extends Fragment {
                 Switch estaenoferta = (Switch) view.findViewById(R.id.switch2);
                 TextInputEditText oferta2 = view.findViewById(R.id.oferta2);
                 Spinner estado = (Spinner) view.findViewById(R.id.planets_spinner2);
+
+                /*Uri selectedImageURI = data.getData();
+                Uri imageFilePath = Uri.parse("some/path/to/file.png");
+                imageView.setTag(imageFilePath.toString());*/
+                String uri = imagen_uri;
 
                 //Switch callSwitch = v.findViewById(R.id.signalCallSwitch);
                 String publicacion;
@@ -267,7 +326,7 @@ public class AltaProducto extends Fragment {
                     alert.show();
                 }else{
                     AltaProducto(nombrearticulo,descripciontext,stock,estaenofertatext, tienepreciotext,monedatext, preciotext,
-                            limistexpersona, oferta, estadotext, publicacion,"1");
+                            limistexpersona, oferta, estadotext, publicacion,"1",uri);
 
                     Snackbar mySnackbar = Snackbar.make(view, "Articulo creado.", 3000);
                     mySnackbar.show();

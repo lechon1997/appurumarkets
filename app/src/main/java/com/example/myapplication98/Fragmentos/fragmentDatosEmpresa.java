@@ -106,9 +106,9 @@ public class fragmentDatosEmpresa extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                //transaction.replace(R.id.fragmentConteiner,CV.getFGEditarDatosUsu());
-                //transaction.commit();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentConteiner,CV.getedit_inf_emp());
+                transaction.commit();
             }
         });
     }

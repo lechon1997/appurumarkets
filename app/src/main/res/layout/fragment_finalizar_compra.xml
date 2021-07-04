@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:orientation="vertical"
+android:background="#E53935"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:android="http://schemas.android.com/apk/res/android"
+tools:context=".Fragmentos.fragmentFinalizarCompra">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginBottom="60dp"
+    android:background="@drawable/background_login"
+    android:orientation="vertical"
+    android:paddingBottom="80dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Finalizar Compra"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textColor="#212121"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:hint="Número de tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/numerotarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="number"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:hint="Mes de vencimiento">
+
+        <AutoCompleteTextView
+            android:id="@+id/MesesVencimiento"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            ></AutoCompleteTextView>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:hint="Año de vencimiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:helperTextTextColor="#D50000"
+        app:helperTextEnabled="true"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mesvencimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="number"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:hint="Código de seguridad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/codigoseguridad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="number"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:hint="Titular de la tarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:helperTextTextColor="#171716"
+        app:helperTextEnabled="true"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error_24"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titulartarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:hint="@string/correo"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/imail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/shrek2"
+        android:hint="Cedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusBottomEnd="@dimen/circle_radius"
+        app:boxCornerRadiusBottomStart="@dimen/circle_radius"
+        app:boxCornerRadiusTopEnd="@dimen/circle_radius"
+        app:boxCornerRadiusTopStart="@dimen/circle_radius"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cedulaidentidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:inputType="number"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:paddingStart="22dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/finalizarcompraleo"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:minHeight="55dp"
+        android:text="Finalizar Compra"
+        android:textStyle="bold"
+        app:cornerRadius="16dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

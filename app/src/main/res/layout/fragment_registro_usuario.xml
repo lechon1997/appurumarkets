@@ -298,11 +298,5 @@
             android:layout_height="wrap_content"
             android:text="xd"
             android:textColor="#F50057" />
-
-
     </LinearLayout>
-
-
-
-
 </androidx.core.widget.NestedScrollView>

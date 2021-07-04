@@ -37,6 +37,17 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="#212121"
                 android:textSize="22sp" />
+            <TextView
+                android:id="@+id/textoasqueroso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginLeft="12dp"
+                android:fontFamily="@font/open_sans"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="#616161"
+                android:textSize="24sp"
+                ></TextView>
 
             <LinearLayout
                 android:layout_width="wrap_content"

@@ -122,14 +122,12 @@ public class fragmentInicio extends Fragment {
         recyclerViewPublicacion.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterPublicacion = new AdapterPublicacion(getContext(), ListaPublicaciones, this);
         recyclerViewPublicacion.setAdapter(adapterPublicacion);
-
     }
 
 
     private void getPublicaciones() {
 
         String LOGIN_REQUEST_URL = "http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/api/listarPublicacionesWs";
-
 
         // Json request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -146,13 +144,19 @@ public class fragmentInicio extends Fragment {
 
                             for (int i = 0; i < ja.length();i++) {
                                 JSONObject jo = ja.getJSONObject(i);
+                                int usuarioid = jo.optInt("usuario_id");
+                                int id = jo.optInt("id");
                                 String titulo = jo.optString("titulo");
                                 int precio = jo.optInt("precio");
                                 int stock = jo.optInt("stock");
                                 String descripcion = jo.optString("descripcion");
                                 String img = jo.optString("foto");
                                 double dsc = jo.optDouble("porcentajeOferta");
-                                publicacion = new Publicacion(titulo, precio, img,dsc,stock,descripcion);
+                                if(Double.isNaN(dsc)){
+                                    dsc = 0;
+                                }
+                                String nombreFan = jo.optString("nombreFantasia");
+                                publicacion = new Publicacion(titulo, precio, img,dsc,stock,descripcion,nombreFan,usuarioid,id);
                                 ListaPublicaciones.add(publicacion);
                             }
                             MostrarLista();

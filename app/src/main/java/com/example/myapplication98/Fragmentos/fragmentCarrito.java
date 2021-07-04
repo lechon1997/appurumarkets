@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.service.controls.Control;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication98.Adaptadores.AdapterCarrito;
@@ -20,8 +22,11 @@ import com.example.myapplication98.Controladores.ControladorUsuario;
 import com.example.myapplication98.Controladores.ControladorVista;
 import com.example.myapplication98.Modelo.ItemCarrito;
 import com.example.myapplication98.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,13 +41,14 @@ public class fragmentCarrito extends Fragment {
     private ControladorUsuario CU = ControladorUsuario.getInstance();
     private static final String ARG_PARAM2 = "param2";
     private View myView;
+    private int total;
     private ControladorVista CV = ControladorVista.getInstance();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public fragmentCarrito() {
-
+        this.total = 0;
 
         // Required empty public constructor
     }
@@ -88,10 +94,48 @@ public class fragmentCarrito extends Fragment {
         CV.getNavigation().setVisibility(View.GONE);
         RecyclerView rv = myView.findViewById(R.id.idCarrito);
 
+        TextView tv = myView.findViewById(R.id.totalxxd);
+        if(!CU.getSession()){
+            tv.setText("Carrito vacío");
+        }else{
+            int suma = 0;
+
+            List lista = CU.getUsuario().getCarrito();
+            Iterator it = lista.iterator();
+            while(it.hasNext()){
+                ItemCarrito ic = (ItemCarrito)it.next();
+                suma = ic.getCantidad() * ic.getP().getPrecio();
+                total += suma;
+                suma = 0;
+            }
+            if (total == 0){
+                tv.setText("Carrito vacío");
+            }else{
+                tv.setText("Total: $" + String.valueOf(total));
+            }
+
+        }
+
         if(CU.getSession()){
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
             AdapterCarrito adapterC = new AdapterCarrito(getContext(),(ArrayList<ItemCarrito>)CU.getUsuario().getCarrito(),this);
             rv.setAdapter(adapterC);
         }
+
+        Button btn = myView.findViewById(R.id.pija);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!CU.getSession()){
+                    Snackbar.make(myView,"Debes iniciar sesión primero",Snackbar.LENGTH_SHORT).show();
+                }else if (total == 0){
+                    Snackbar.make(myView,"Su carrito está vacío",Snackbar.LENGTH_SHORT).show();
+                }else{
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragmentConteiner,new fragmentFinalizarCompra());
+                    transaction.commit();
+                }
+            }
+        });
     }
 }

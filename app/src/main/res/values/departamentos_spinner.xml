@@ -21,4 +21,19 @@
         <item>SORIANO</item>
         <item>TREINTA Y TRES</item>
     </string-array>
+
+    <string-array name="meses_vencimiento">
+        <item >ENERO</item>
+        <item>FEBRERO</item>
+        <item>MARZO</item>
+        <item>ABRIL</item>
+        <item>MAYO</item>
+        <item>JUNIO</item>
+        <item>JULIO</item>
+        <item>AGOSTO</item>
+        <item>SEPTIEMBRE</item>
+        <item>OCTUBRE</item>
+        <item>NOVIEMBRE</item>
+        <item>DICIEMBRE</item>
+    </string-array>
 </resources>

@@ -104,8 +104,8 @@ public class fragmentVerProducto extends Fragment {
         TextView tv2 = myView.findViewById(R.id.idPrecioVP);
         TextView tv3 = myView.findViewById(R.id.iddscVP);
         TextView tv4 = myView.findViewById(R.id.precioAntesVP);
-
-
+        TextView tv5 = myView.findViewById(R.id.textoasqueroso);
+        tv5.setText("Empresa: " + p.getNombreFantasia());
 
         TextView tvStock = myView.findViewById(R.id.tvStockTotal);
         tvStock.setText(String.valueOf(p.getStock()));

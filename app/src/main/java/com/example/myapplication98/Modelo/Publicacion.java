@@ -7,17 +7,47 @@ public class Publicacion {
     private double Descuento;
     private int Stock;
     private String Descripcion;
+    private String nombreFantasia;
+    private int usuario_id;
+    private int id;
     public Publicacion() {
 
     }
 
-    public Publicacion(String titulo, int precio,String foto,double descuento,int stock,String descripcion) {
+    public Publicacion(String titulo, int precio, String foto, double descuento, int stock, String descripcion, String nombreFantasia, int usuario_id, int id) {
         Titulo = titulo;
         Precio = precio;
         Foto = foto;
         Descuento = descuento;
         Stock = stock;
         Descripcion = descripcion;
+        this.nombreFantasia = nombreFantasia;
+        this.usuario_id = usuario_id;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    public String getNombreFantasia() {
+        return nombreFantasia;
+    }
+
+    public void setNombreFantasia(String nombreFantasia) {
+        this.nombreFantasia = nombreFantasia;
     }
 
     public int getStock() {

@@ -54,7 +54,8 @@ public class AdapterCarrito extends RecyclerView.Adapter<AdapterCarrito.CarritoH
             holder.tv4.setText("$"+ String.valueOf(cantidad * precio));
         }
 
-        String url ="http://"+ Config.IP_LOCAL_HOST +"/urumarkets/public/storage/productos/"+imagenP;
+        String url ="http:" +
+                "4711//"+ Config.IP_LOCAL_HOST +"/urumarkets/public/storage/productos/"+imagenP;
         Glide.with(inflater.getContext()).load(url).into(holder.img);
 
         holder.tv1.setText(titulo);

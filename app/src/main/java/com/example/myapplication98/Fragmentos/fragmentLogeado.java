@@ -39,6 +39,7 @@ public class fragmentLogeado extends Fragment {
 
     private Button btnDatosP;
     private Button btnDatosV;
+    private Button btnDatosV2;
     private Button btnCerrarS;
     private Button btnCrearP;
 
@@ -99,6 +100,7 @@ public class fragmentLogeado extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         btnDatosP = myView.findViewById(R.id.btnDatosP);
         btnDatosV = myView.findViewById(R.id.btnDatosEmpresa);
+        btnDatosV2 = myView.findViewById(R.id.CrearProducto);
         btnCerrarS = myView.findViewById(R.id.btnCerrarSesion);
         btnCrearP = myView.findViewById(R.id.CrearProducto);
 
@@ -116,6 +118,8 @@ public class fragmentLogeado extends Fragment {
         if(u!=null && u.getTipoUsuario().equals("cliente")){
             btnDatosV.setVisibility(View.INVISIBLE);
             btnDatosV.setHeight(0);
+            btnDatosV2.setVisibility(View.INVISIBLE);
+            btnDatosV2.setHeight(0);
         }
 
         btnDatosV.setOnClickListener(new View.OnClickListener() {
